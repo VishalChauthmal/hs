@@ -1,0 +1,2 @@
+homestayz = angular.module('homestayz',[
+])
