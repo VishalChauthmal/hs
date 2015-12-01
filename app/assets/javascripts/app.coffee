@@ -1,7 +1,7 @@
 homestayz = angular.module('homestayz',[
-	'templates',
-	'ngRoute',
-	'controllers',
+  'templates',
+  'ngRoute',
+  'controllers',
 ])
 
 homestayz.config([ '$routeProvider',
