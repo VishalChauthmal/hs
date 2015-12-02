@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Gems added for customization
 gem 'bower-rails'
 gem 'angularjs-rails'
+gem 'bootstrap', '~> 4.0.0.alpha1'
 
 gem 'foreman'
 
