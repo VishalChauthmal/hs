@@ -34,7 +34,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Gems added for customization
 gem 'bower-rails'
-gem 'angular-rails-templates'
 
 gem 'foreman'
 
