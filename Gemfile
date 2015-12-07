@@ -33,12 +33,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # Gems added for customization
-gem 'bower-rails'
 gem 'angularjs-rails'
 gem 'bootstrap', '~> 4.0.0.alpha1'
+gem 'holder_rails'
 
+# HEROKU deployment: Below 4 gems
 gem 'foreman'
-
 group :production, :staging do
   gem "rails_12factor"
   gem "rails_stdout_logging"
