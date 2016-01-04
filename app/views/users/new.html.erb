@@ -1,2 +1,31 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<!-- Login Modal -->
+    <div class="container" style="padding-top: 50px">
+        <div class="col-md-4 col-md-offset-4">
+            <h4>Signup</h4>
+            <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
+                <div class="form-group">
+                    <%= f.label :name, class: "control-label" %>
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :email, class: "control-label" %>
+                    <%= f.email_field :email, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label for="customer-mobile" class="control-label">Mobile</label>
+                    <input type="text" class="form-control" id="customer-mobile">
+                </div>
+                <div class="form-group">
+                    <%= f.label :password, class: "control-label" %>
+                    <%= f.password_field :password, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password_confirmation, "Confirm Password", class: "control-label" %>
+                    <%= f.password_field :password_confirmation, class: "form-control" %>
+                </div>
+                <%= f.submit "Signup", class: "btn btn-signup btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+<!-- /Login Modal -->
