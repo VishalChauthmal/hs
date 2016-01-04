@@ -40,9 +40,10 @@ gem 'holder_rails'
 # HEROKU deployment: Below 4 gems
 gem 'foreman'
 group :production, :staging do
-  gem "rails_12factor"
-  gem "rails_stdout_logging"
-  gem "rails_serve_static_assets"
+    gem "rails_12factor"
+    gem "rails_stdout_logging"
+    gem "rails_serve_static_assets"
+    gem 'puma' 
 end
 
 
