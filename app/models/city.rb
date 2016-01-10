@@ -1,3 +1,5 @@
 class City < ActiveRecord::Base
-	validates :city_name, presence: true
+	has_many :localities
+
+	validates :name, presence: true
 end
