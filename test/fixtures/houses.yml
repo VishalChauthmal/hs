@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  owner_id: 
+  bhk: 1
+  no_of_beds: 1
+  allowed_gender: MyString
+  locality_id: 
+  pincode: 1
+  lat: 1.5
+  long: 1.5
+  address: MyText
+  landmark: MyString
+
+two:
+  type: 
+  owner_id: 
+  bhk: 1
+  no_of_beds: 1
+  allowed_gender: MyString
+  locality_id: 
+  pincode: 1
+  lat: 1.5
+  long: 1.5
+  address: MyText
+  landmark: MyString
