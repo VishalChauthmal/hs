@@ -1,0 +1,23 @@
+<!-- House search form - start -->
+<div class="row" style="margin:50px">
+	<div class="col-xs-4 col-xs-offset-4">
+		<%= form_for(:search, url: results_path, method: :get) do |f| %>
+
+			<%= f.collection_select :city_id, City.all, :id, :name, selected: 1 %>
+
+			<%= f.collection_select :locality_id, Locality.all, :id, :name, prompt: 'Select Locality' %>
+
+			<%= f.select :gender, options_for_select([['Male', 'male'], ['Female', 'female']]), include_blank: 'Gender' %>
+
+			<%= f.submit "Search Homes", class: "btn btn-block btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+
+<style type="text/css">
+	.form-control {
+		margin-bottom: 10px;
+	}
+</style>
+<!-- House search form - end -->
