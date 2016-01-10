@@ -1,0 +1,36 @@
+<h1>Houses#results</h1>
+<p>Find me in app/views/houses/results.html.erb</p>
+
+
+
+<h1 style="text-align:center">Search Results for Houses</h1>
+
+<div class="clearfix" style="padding:50px; border-top:5px solid skyblue;">
+	<% if !@houses.blank? %>
+		<% @houses.each do |house| %>
+				<div style="border-bottom:1px solid gray; padding:7.5px 25px;">
+						<div style="color:blue;">House</div>
+						<div>House ID: <%= house.id %></div>
+						<div>Address: <%= house.address %></div>
+						<div>BHK: <%= house.bhk %></div>
+						<div>No. of Beds: <%= house.no_of_beds %></div>
+						<div>Allowed Gender: <%= house.allowed_gender %></div>
+						<div>Locality: <%= house.locality.name %></div>
+						<div>City: <%= house.locality.city.name %></div>
+
+						<% @beds = house.beds %>
+						<% @beds.each do |bed| %>
+								<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+										<div style="color:drakgray;">Bed</div>
+										<div>rent: <strong><%= bed.rent %></strong></div>
+										<div>security_deposit: <%= bed.security_deposit %></div>
+										<div>room_occupancy: <%= bed.room_occupancy %></div>
+								</div>
+						<% end %>
+				</div>
+		<% end %>
+	<% else %>
+		<h4 style="text-align:center">Sorry, no results matched your search.</h4>
+	<% end %>
+</div>
+
