@@ -1,4 +1,5 @@
 class Tenant < ActiveRecord::Base
+	has_many :beds
 
 	before_save { self.email = email.downcase }
 	validates :name, presence: true, length: { maximum: 100 }
