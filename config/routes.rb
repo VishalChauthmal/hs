@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'search' => 'houses#search'
   get 'results' => 'houses#results'
 
-  root 'home#index'
+    root 'home#coming_soon'
 
   get 'home/index'
   get 'home/search'

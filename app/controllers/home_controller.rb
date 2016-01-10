@@ -3,4 +3,6 @@ class HomeController < ApplicationController
 	end
     def search
     end
+    def coming_soon
+    end
 end
