@@ -92,7 +92,7 @@
 			<tr>
 				<th class="table-fields-column-heading"></th>
 				<th class="existing-model-column-heading">Existing Model</th>
-				<th class="homestay-model-column-heading">Homestay Model</th>
+				<th class="homestay-model-column-heading">Homestayz Model</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -495,9 +495,9 @@ function update_monthly_rent_per_tenant() {
 
 	// Modified implementation after hiding the input slider for monthly_rent_per_tenant for public
 	if ($('#select-furnished-or-not').val() == 'to-be-furnished') {
-		monthly_rent_per_tenant = parseInt((1.3*(current_monthly_rent + monthly_cut_for_furnishing))/total_number_of_tenants, 10);
+		monthly_rent_per_tenant = (1.3*(current_monthly_rent + monthly_cut_for_furnishing))/total_number_of_tenants;
 	} else {
-		monthly_rent_per_tenant = parseInt((1.4*current_monthly_rent)/total_number_of_tenants, 10);
+		monthly_rent_per_tenant = (1.4*current_monthly_rent)/total_number_of_tenants;
 	};
 }
 
@@ -512,7 +512,7 @@ function update_total_monthly_rental_income() {
 }
 
 function update_monthly_cut() {
-	monthly_cut = parseInt(0.125 * total_monthly_rental_income, 10);
+	monthly_cut = Math.round(0.125 * total_monthly_rental_income);
 }
 
 function update_monthly_cut_for_furnishing() {
