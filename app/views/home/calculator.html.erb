@@ -1,0 +1,692 @@
+<!--
+	<link rel="stylesheet" href="{{ Helper::get_Path('css/calculator.css') }}">
+	<script src="{{ Helper::get_Path('js/calculator.js') }}"></script>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+-->
+
+<div class="section-cover">
+	<div class="cover-text">
+		<div class="cover-heading">Don't just take our word for it<br> Calculate yourself</div>
+		<div class="cover-subheading">Details in calculator but but for input purposes not for comparison purposes</div>
+	</div>
+</div>
+
+
+
+<div class="section-input clearfix">
+	<div class="input-element input-element-left">
+		<div class="input-field-name-column">
+			<div class="input-field-name">No. of Bedrooms</div>
+		</div>
+		<div class="input-field-column">
+			<select id="select-bhk" class="input-field">
+				<option value="1 BHK">1 BHK</option>
+				<option value="2 BHK">2 BHK</option>
+				<option value="3 BHK">3 BHK</option>
+				<option value="4 BHK">4 BHK</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="input-element">
+		<div class="input-field-name-column">
+			<div class="input-field-name">Existing Monthly Rent</div>
+		</div>
+		<div class="input-field-column input-field-column-slider">
+			<div class="slider-current-monthly-rent"></div>
+		</div>
+		<div class="current-monthly-rent-slider-value"></div>
+	</div>
+
+	<div class="input-element input-element-left">
+		<div class="input-field-name-column">
+			<div class="input-field-name">Furnishing status</div>
+		</div>
+		<div class="input-field-column">
+			<select id="select-furnished-or-not" class="input-field">
+				<option value="to-be-furnished">To be furnished</option>
+				<option value="furnished">Already furnished</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="input-element" style="display:none;">
+		<div class="input-field-name-column">
+			<div class="input-field-name">Monthly rent per tenant</div>
+		</div>
+		<div class="input-field-column input-field-column-slider">
+			<div class="slider-monthly-rent-per-tenant"></div>
+		</div>
+		<div class="monthly-rent-per-tenant-slider-value"></div>
+	</div>
+
+	<div class="input-element input-element-left" style="display:none;">
+		<div class="input-field-name-column">
+			<div class="input-field-name">Tenants per bedroom</div>
+		</div>
+		<div class="input-field-column">
+			<select id="select-tenants-per-bedroom" class="input-field">
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="input-element">
+		<div class="input-field-name-column">
+			<div class="input-field-name">Total number of tenants</div>
+		</div>
+		<div class="input-field-column">
+			<div class="total-tenants input-field"></div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="section-calculator-table">
+	<table>
+		<thead>
+			<tr>
+				<th class="table-fields-column-heading"></th>
+				<th class="existing-model-column-heading">Existing Model</th>
+				<th class="homestay-model-column-heading">Homestay Model</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Total rental income per month</td>
+				<td class="current-monthly-rent"></td>
+				<td class="total-monthly-rental-income"></td>
+			</tr>
+
+			<tr>
+				<td>Homestay cut (12.5%)</td>
+				<td>None</td>
+				<td class="monthly-cut"></td>
+			</tr>
+
+			<tr>
+				<td>Cost of furnishing</td>
+				<td>None</td>
+				<td class="monthly-cut-for-furnishing"></td>
+			</tr>
+
+			<tr>
+				<td>Rent to the owner</td>
+				<td class="current-monthly-rent"></td>
+				<td class="monthly-rent-to-owner"></td>
+			</tr>
+
+			<tr>
+				<td>Jump in monthly income</td>
+				<td>Zero</td>
+				<td class="increase-in-monthly-rent-to-owner"></td>
+			</tr>
+
+			<tr>
+				<td>Brokerage</td>
+				<td class="current-brokerage"></td>
+				<td>Zero</td>
+			</tr>
+
+			<tr>
+				<td>Annual rental income</td>
+				<td class="current-annual-income"></td>
+				<td class="total-annual-rental-income-to-owner"></td>
+			</tr>
+
+			<tr>
+				<td>Jump in annual income</td>
+				<td>Zero</td>
+				<td class="increase-in-annual-rent-to-owner"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+	.section-cover {
+		padding-top: 125px;
+		padding-bottom: 50px;
+	}
+
+	.section-cover .cover-text {
+		text-align: center;
+		/*font-weight: bold;*/
+	}
+
+	.section-cover .cover-heading {
+		font-size: 35px;
+		color: #72D3F4;
+		margin-bottom: 10px;
+	}
+
+	.section-cover .cover-subheading {
+		font-size: 16px;
+		color: black;
+	}
+
+
+
+
+
+
+	.section-input {
+		padding: 50px 150px;
+		background-color: #72D3F4;
+	}
+
+	.section-input .input-element {
+		width: 50%;
+		float: left;
+		margin-top: 15px;
+		margin-bottom: 15px;
+
+		position: relative;
+	}
+
+	.section-input .input-element-left {
+		padding-right: 100px;
+	}
+
+	.section-input .input-field-name-column {
+		width: 45%;
+		float: left;
+		padding-right: 20px;
+		display: table;
+	}
+
+	.section-input .input-field-name {
+		width: 100%;
+		display: table-cell;
+		height: 40px;
+		vertical-align: middle; /* To vertically align input field names */
+	}
+
+	.section-input .input-field-column {
+		width: 55%;
+		float: left;
+		display: table;
+		/*padding-right: 20px;*/
+	}
+
+	.section-input .input-field-column-slider {
+		padding-top: 15px; /* To vertically align the slider (approximately) in the middle */ 
+	}
+
+	.section-input .input-field {
+		width: 100%;
+		display: table-cell;
+		height: 40px;
+		vertical-align: middle; /* To vertically align total number of tenants */
+		background-color: white;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.section-input .total-tenants {
+		background-color: transparent !important;
+	}
+
+	.current-monthly-rent-slider-value, .monthly-rent-per-tenant-slider-value {
+		position: absolute;
+		left: 105%;
+		top: 10px;
+		color: black;
+		font-size: 18px;
+	}
+
+
+
+
+
+
+	.section-calculator-table {
+		padding: 50px 150px;
+	}
+
+	.section-calculator-table table {
+		width: 100%;
+	}
+
+	.section-calculator-table thead {
+		color: #72D3F4;
+		font-size: 20px;
+		border-bottom: 1px solid lightgray;
+	}
+
+	.section-calculator-table .table-fields-column-heading {
+		width: 25%;
+	}
+
+	.section-calculator-table .existing-model-column-heading {
+		width: 30%;
+	}
+
+	.section-calculator-table .homestay-model-column-heading {
+		width: 30%;
+	}
+
+	/*.section-calculator-table tr {
+		height: 50px;
+	}*/
+
+	.section-calculator-table table>thead>tr>th {
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+
+	.section-calculator-table table>tbody>tr>td {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	.section-calculator-table table>tbody>:first-child td {
+		padding-top: 50px;
+	}
+
+	.section-calculator-table table>tbody>tr>:first-child {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	.section-calculator-table .total-annual-rental-income-to-owner {
+		color: #72D3F4;
+		font-size: 20px;
+	}
+
+	.section-calculator-table .increase-in-annual-rent-to-owner {
+		color: #72D3F4;
+		font-size: 30px;
+	}
+</style>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+
+	$(".slider-current-monthly-rent").slider({
+		min: 10000,
+		max: 100000,
+		value: 25000,
+		step: 100,
+	});
+
+
+	/*
+	$( ".slider-current-monthly-rent" ).on( "slide", function() {
+		slider_current_monthly_rent_value = $(".slider-current-monthly-rent").slider("option", "value");
+		$('.current-monthly-rent-slider-value').html(slider_current_monthly_rent_value);
+	} );
+	*/
+
+
+
+	$(".slider-monthly-rent-per-tenant").slider({
+		min: 5000,
+		max: 25000,
+		value: 10000,
+		step: 100,
+	});
+
+	/*
+	$( ".slider-monthly-rent-per-tenant" ).on( "slide", function( event, ui) {
+		slider_monthly_rent_per_tenant_value = $(".slider-monthly-rent-per-tenant").slider("option", "value");
+		$('.monthly-rent-per-tenant-slider-value').html(slider_monthly_rent_per_tenant_value);
+	} );
+	*/
+
+
+	// Default selected values on page load
+	$('#select-bhk option[value="2 BHK"]').prop('selected', true);
+	$('#select-furnished-or-not option[value="to-be-furnished"]').prop('selected', true);
+	// $('#select-current-monthly-rent option[value="35000"]').prop('selected', true);
+	$('#select-tenants-per-bedroom option[value="2"]').prop('selected', true);
+	// $('#select-rent-per-tenant option[value="12000"]').prop('selected', true);
+
+	// Variables & their initializations on page load
+	var number_of_bedrooms = get_number_of_bedrooms();
+	var total_number_of_tenants = get_total_number_of_tenants();
+	var current_monthly_rent = get_current_monthly_rent();
+	var monthly_cut_for_furnishing = get_monthly_cut_for_furnishing();
+	var monthly_rent_per_tenant = get_monthly_rent_per_tenant();
+	var total_monthly_rental_income = get_total_monthly_rental_income();
+	var monthly_cut = get_monthly_cut();
+	var monthly_rent_to_owner = get_monthly_rent_to_owner();
+	var increase_in_monthly_rent_to_owner = get_increase_in_monthly_rent_to_owner();
+	var current_brokerage = get_current_brokerage();
+	var current_annual_income = get_current_annual_income();
+	var total_annual_rental_income_to_owner = get_total_annual_rental_income_to_owner();
+	var increase_in_annual_rent_to_owner = get_increase_in_annual_rent_to_owner();
+
+	// Printing the Default values on page load
+	print_total_number_of_tenants();
+	print_monthly_rent_per_tenant();
+	print_current_monthly_rent();
+	print_total_monthly_rental_income();
+	print_monthly_cut();
+	print_monthly_cut_for_furnishing();
+	print_monthly_rent_to_owner();
+	print_increase_in_monthly_rent_to_owner();
+	print_current_brokerage();
+	print_current_annual_income();
+	print_total_annual_rental_income_to_owner();
+	print_increase_in_annual_rent_to_owner();
+
+	// On changing the parameter values
+	$('#select-bhk').change(on_change_BHK);
+	$('#select-furnished-or-not').change(on_change_furnished_or_not);
+
+	// $('#select-current-monthly-rent').change(on_change_current_monthly_rent);
+	$( ".slider-current-monthly-rent" ).on( "slide", on_change_current_monthly_rent );
+
+	$('#select-tenants-per-bedroom').change(on_change_tenants_per_bedroom);
+
+	// $('#select-rent-per-tenant').change(on_change_rent_per_tenant);
+	$( ".slider-monthly-rent-per-tenant" ).on( "slide", on_change_rent_per_tenant );
+
+});
+
+
+
+// Printing the values in HTML document - start
+function print_total_number_of_tenants() {
+	$('.total-tenants').html( total_number_of_tenants );
+}
+
+function print_monthly_rent_per_tenant() {
+	$('.monthly-rent-per-tenant-slider-value').html( monthly_rent_per_tenant );
+}
+
+function print_current_monthly_rent() {
+	$('.current-monthly-rent').html( current_monthly_rent );
+	$('.current-monthly-rent-slider-value').html( current_monthly_rent );
+}
+
+function print_total_monthly_rental_income() {
+	$(".total-monthly-rental-income").html( total_monthly_rental_income );
+}
+
+function print_monthly_cut() {
+	$('.monthly-cut').html( monthly_cut );
+}
+
+function print_monthly_cut_for_furnishing() {
+	$('.monthly-cut-for-furnishing').html( monthly_cut_for_furnishing );
+}
+
+function print_monthly_rent_to_owner() {
+	$('.monthly-rent-to-owner').html( monthly_rent_to_owner );
+}
+
+function print_increase_in_monthly_rent_to_owner() {
+	$('.increase-in-monthly-rent-to-owner').html( increase_in_monthly_rent_to_owner );
+}
+
+function print_current_brokerage() {
+	$('.current-brokerage').html( current_brokerage );
+}
+
+function print_current_annual_income() {
+	$('.current-annual-income').html( current_annual_income );
+}
+
+function print_total_annual_rental_income_to_owner() {
+	$('.total-annual-rental-income-to-owner').html( total_annual_rental_income_to_owner );
+}
+
+function print_increase_in_annual_rent_to_owner() {
+	$('.increase-in-annual-rent-to-owner').html(increase_in_annual_rent_to_owner);
+}
+// Printing the values in HTML document - end
+
+
+
+// Updating the values of variables - start
+function update_number_of_bedrooms() {
+	switch ($('#select-bhk').val()) {
+		case '1 BHK':
+			number_of_bedrooms = 1;
+			break;
+		case '2 BHK':
+			number_of_bedrooms = 2;
+			break;
+		case '3 BHK':
+			number_of_bedrooms = 3;
+			break;
+		case '4 BHK':
+			number_of_bedrooms = 4;
+			break;
+		default:
+			number_of_bedrooms = 2;
+			break;
+	}
+}
+
+function update_total_number_of_tenants() {
+	total_number_of_tenants = $('#select-tenants-per-bedroom').val() * number_of_bedrooms;
+}
+
+function update_monthly_rent_per_tenant() {
+	// Previous implementation for Pre-launch
+	// monthly_rent_per_tenant = $(".slider-monthly-rent-per-tenant").slider("option", "value");
+
+	// Modified implementation after hiding the input slider for monthly_rent_per_tenant for public
+	if ($('#select-furnished-or-not').val() == 'to-be-furnished') {
+		monthly_rent_per_tenant = parseInt((1.3*(current_monthly_rent + monthly_cut_for_furnishing))/total_number_of_tenants, 10);
+	} else {
+		monthly_rent_per_tenant = parseInt((1.4*current_monthly_rent)/total_number_of_tenants, 10);
+	};
+}
+
+function update_current_monthly_rent() {
+	// current_monthly_rent = $('#select-current-monthly-rent').val();
+	current_monthly_rent = $(".slider-current-monthly-rent").slider("option", "value");
+}
+
+function update_total_monthly_rental_income() {
+	// total_monthly_rental_income = $('#select-rent-per-tenant').val() * total_number_of_tenants;
+	total_monthly_rental_income = monthly_rent_per_tenant * total_number_of_tenants;
+}
+
+function update_monthly_cut() {
+	monthly_cut = parseInt(0.125 * total_monthly_rental_income, 10);
+}
+
+function update_monthly_cut_for_furnishing() {
+
+	if ($('#select-furnished-or-not').val() == 'to-be-furnished') {
+		switch (number_of_bedrooms) {
+			case 1:
+				monthly_cut_for_furnishing = 6000;
+				break;
+			case 2:
+				monthly_cut_for_furnishing = 8000;
+				break;
+			case 3:
+				monthly_cut_for_furnishing = 10000;
+				break;
+			case 4:
+				monthly_cut_for_furnishing = 12000;
+				break;
+		}
+	} else {
+		monthly_cut_for_furnishing = 0;
+	};
+}
+
+function update_monthly_rent_to_owner() {
+	monthly_rent_to_owner = total_monthly_rental_income - monthly_cut - monthly_cut_for_furnishing;
+}
+
+function update_increase_in_monthly_rent_to_owner() {
+	increase_in_monthly_rent_to_owner = monthly_rent_to_owner - current_monthly_rent;
+}
+
+function update_current_brokerage() {
+	current_brokerage = current_monthly_rent;
+}
+
+function update_current_annual_income() {
+	current_annual_income = current_monthly_rent * 12 - current_brokerage;
+}
+
+function update_total_annual_rental_income_to_owner() {
+	total_annual_rental_income_to_owner = monthly_rent_to_owner * 12;
+}
+
+function update_increase_in_annual_rent_to_owner() {
+	increase_in_annual_rent_to_owner = total_annual_rental_income_to_owner - current_annual_income;
+}
+// Updating the values of variables - end
+
+
+
+// Getting the values of variables - start
+function get_number_of_bedrooms() {
+	update_number_of_bedrooms();
+	return number_of_bedrooms;
+}
+
+function get_total_number_of_tenants() {
+	update_total_number_of_tenants();
+	return total_number_of_tenants;
+}
+
+function get_monthly_rent_per_tenant() {
+	update_monthly_rent_per_tenant();
+	return monthly_rent_per_tenant;
+}
+
+function get_current_monthly_rent() {
+	update_current_monthly_rent();
+	return current_monthly_rent;
+}
+
+function get_total_monthly_rental_income() {
+	update_total_monthly_rental_income();
+	return total_monthly_rental_income;
+}
+
+function get_monthly_cut() {
+	update_monthly_cut();
+	return monthly_cut;
+}
+
+function get_monthly_cut_for_furnishing() {
+	update_monthly_cut_for_furnishing();
+	return monthly_cut_for_furnishing;
+}
+
+function get_monthly_rent_to_owner() {
+	update_monthly_rent_to_owner();
+	return monthly_rent_to_owner;
+}
+
+function get_increase_in_monthly_rent_to_owner() {
+	update_increase_in_monthly_rent_to_owner();
+	return increase_in_monthly_rent_to_owner;
+}
+
+function get_current_brokerage() {
+	update_current_brokerage();
+	return current_brokerage;
+}
+
+function get_current_annual_income() {
+	update_current_annual_income();
+	return current_annual_income;
+}
+
+function get_total_annual_rental_income_to_owner() {
+	update_total_annual_rental_income_to_owner();
+	return total_annual_rental_income_to_owner;
+}
+
+function get_increase_in_annual_rent_to_owner() {
+	update_increase_in_annual_rent_to_owner();
+	return increase_in_annual_rent_to_owner;
+}
+// Getting the values of variables - end
+
+
+
+
+
+
+
+// Functions to be called on changing parameter values - start
+function on_change_BHK() {
+	update_and_print_on_change();
+}
+
+function on_change_furnished_or_not() {
+	update_and_print_on_change();
+}
+
+function on_change_current_monthly_rent() {
+	update_and_print_on_change();
+}
+
+function on_change_tenants_per_bedroom() {
+	update_and_print_on_change()
+}
+
+function on_change_rent_per_tenant() {
+	update_and_print_on_change();
+}
+
+function update_and_print_on_change() {
+	update_number_of_bedrooms();
+	update_total_number_of_tenants();
+	update_current_monthly_rent();
+	update_monthly_cut_for_furnishing();
+	update_monthly_rent_per_tenant();
+	update_total_monthly_rental_income();
+	update_monthly_cut();
+	update_monthly_rent_to_owner();
+	update_increase_in_monthly_rent_to_owner();
+	update_current_brokerage();
+	update_current_annual_income();
+	update_total_annual_rental_income_to_owner();
+	update_increase_in_annual_rent_to_owner();
+
+
+	print_total_number_of_tenants();
+	print_current_monthly_rent();
+	print_monthly_cut_for_furnishing();
+	print_monthly_rent_per_tenant();
+	print_total_monthly_rental_income();
+	print_monthly_cut();
+	print_monthly_rent_to_owner();
+	print_increase_in_monthly_rent_to_owner();
+	print_current_brokerage();
+	print_current_annual_income();
+	print_total_annual_rental_income_to_owner();
+	print_increase_in_annual_rent_to_owner();
+}
+// Functions to be called on changing parameter values - end
+
+</script>

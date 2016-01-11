@@ -3,16 +3,17 @@ Rails.application.routes.draw do
   get 'search' => 'houses#search'
   get 'results' => 'houses#results'
 
-    root 'home#coming_soon'
+  root 'home#coming_soon'
+  get 'calculator' => 'home#calculator'
 
   get 'home/index'
   get 'home/search'
 
 
-    get 'signup'    =>  'users#new'
-    # get 'login'     =>  'sessions#new'
-    # post 'login'    =>  'sessions#create'
-    # delete 'logout' =>  'sessions#destroy'
+  get 'signup'    =>  'users#new'
+  # get 'login'     =>  'sessions#new'
+  # post 'login'    =>  'sessions#create'
+  # delete 'logout' =>  'sessions#destroy'
 	resources :users
 
 
