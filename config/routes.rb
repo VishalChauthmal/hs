@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'results' => 'houses#results'
 
   root 'home#coming_soon'
+  post 'house_listing_requests' => 'home#house_listing_request'
   get 'calculator' => 'home#calculator'
 
   get 'home/index'
