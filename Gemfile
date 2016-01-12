@@ -60,10 +60,16 @@ group :test do
 end
 
 # HEROKU deployment: Below 4 gems
-gem 'foreman'
-group :production, :staging do
+group :production do
     gem 'rails_12factor', '0.0.2'
     gem "rails_stdout_logging"
     gem "rails_serve_static_assets"
-    gem 'puma'
+    gem 'puma',             '2.11.1'
 end
+# gem 'foreman'
+# group :production, :staging do
+#     gem 'rails_12factor', '0.0.2'
+#     gem "rails_stdout_logging"
+#     gem "rails_serve_static_assets"
+#     gem 'puma'
+# end
