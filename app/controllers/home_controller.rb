@@ -4,6 +4,5 @@ class HomeController < ApplicationController
     def search
     end
     def coming_soon
-        @user = User.new()
     end
 end
