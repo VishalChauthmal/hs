@@ -48,3 +48,6 @@ Bed.create!(house_id: 2,
 						security_deposit: 32000,
 						room_occupancy: 1)
 
+Amenity.create!(name: "Washing Machine")
+Amenity.create!(name: "Geyser")
+
