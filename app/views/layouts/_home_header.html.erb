@@ -39,7 +39,7 @@
             <%= render 'shared/error_messages', object: f.object %>
                 <div class="form-group">
                     <%= f.label :name, class: "control-label" %>
-                    <%= f.text_field :name, class: "form-control" %>
+                    <%= f.text_field :name, required: true, class: "form-control" %>
                 </div>
                 <div class="form-group">
                     <%= f.label :email, class: "control-label" %>
@@ -49,7 +49,7 @@
                     <!-- <label for="customer-mobile" class="control-label">Mobile</label>
                     <input type="text" class="form-control" id="customer-mobile"> -->
                     <%= f.label :phone, class: "control-label" %>
-                    <%= f.phone_field :phone, class: "form-control" %>
+                    <%= f.phone_field :phone, required: true, class: "form-control" %>
                 </div>
                 <%= f.submit "Submit", class: "btn btn-signup btn-primary" %>
             <% end %>
