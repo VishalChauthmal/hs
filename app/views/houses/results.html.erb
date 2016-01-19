@@ -18,6 +18,13 @@
 						<div>Locality: <%= house.locality.name %></div>
 						<div>City: <%= house.locality.city.name %></div>
 
+						<div style="margin: 5px 25px;">
+							<div style="color:cadetblue;">Amenities</div>
+							<% house.amenities.each do |amenity| %>
+								<div><%= amenity.name %></div>
+							<% end %>
+						</div>
+
 						<% @beds = house.beds %>
 						<% @beds.each do |bed| %>
 								<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">

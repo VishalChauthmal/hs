@@ -51,3 +51,7 @@ Bed.create!(house_id: 2,
 Amenity.create!(name: "Washing Machine")
 Amenity.create!(name: "Geyser")
 
+House.find(1).house_amenity_relationships.create!(amenity_id: 1)
+House.find(1).house_amenity_relationships.create!(amenity_id: 2)
+House.find(2).house_amenity_relationships.create!(amenity_id: 2)
+

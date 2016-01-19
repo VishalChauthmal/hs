@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119103204) do
+ActiveRecord::Schema.define(version: 20160119120058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20160119103204) do
   end
 
   add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
+
+  create_table "house_amenity_relationships", force: :cascade do |t|
+    t.integer  "house_id"
+    t.integer  "amenity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "house_amenity_relationships", ["amenity_id"], name: "index_house_amenity_relationships_on_amenity_id", using: :btree
+  add_index "house_amenity_relationships", ["house_id", "amenity_id"], name: "index_house_amenity_relationships_on_house_id_and_amenity_id", unique: true, using: :btree
+  add_index "house_amenity_relationships", ["house_id"], name: "index_house_amenity_relationships_on_house_id", using: :btree
 
   create_table "house_listing_requests", force: :cascade do |t|
     t.string   "name"
@@ -118,6 +129,8 @@ ActiveRecord::Schema.define(version: 20160119103204) do
 
   add_foreign_key "beds", "houses"
   add_foreign_key "beds", "tenants"
+  add_foreign_key "house_amenity_relationships", "amenities"
+  add_foreign_key "house_amenity_relationships", "houses"
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
   add_foreign_key "localities", "cities"
