@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119120058) do
+ActiveRecord::Schema.define(version: 20160125114601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,20 @@ ActiveRecord::Schema.define(version: 20160119120058) do
   add_index "localities", ["name", "city_id"], name: "index_localities_on_name_and_city_id", using: :btree
   add_index "localities", ["name"], name: "index_localities_on_name", using: :btree
 
+  create_table "neighborhoods", force: :cascade do |t|
+    t.integer  "locality_id"
+    t.integer  "neighbor_locality_id"
+    t.float    "distance"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "neighborhoods", ["locality_id", "distance"], name: "index_neighborhoods_on_locality_id_and_distance", using: :btree
+  add_index "neighborhoods", ["locality_id", "neighbor_locality_id"], name: "index_neighborhoods_on_locality_id_and_neighbor_locality_id", unique: true, using: :btree
+  add_index "neighborhoods", ["locality_id"], name: "index_neighborhoods_on_locality_id", using: :btree
+  add_index "neighborhoods", ["neighbor_locality_id", "distance"], name: "index_neighborhoods_on_neighbor_locality_id_and_distance", using: :btree
+  add_index "neighborhoods", ["neighbor_locality_id"], name: "index_neighborhoods_on_neighbor_locality_id", using: :btree
+
   create_table "owners", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -134,4 +148,5 @@ ActiveRecord::Schema.define(version: 20160119120058) do
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
   add_foreign_key "localities", "cities"
+  add_foreign_key "neighborhoods", "localities"
 end
