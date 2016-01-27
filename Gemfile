@@ -64,7 +64,7 @@ group :production do
     gem 'rails_12factor', '0.0.2'
     gem "rails_stdout_logging"
     gem "rails_serve_static_assets"
-    gem 'puma',             '2.11.1'
+    gem 'puma'
 end
 # gem 'foreman'
 # group :production, :staging do
