@@ -4,6 +4,7 @@ class House < ActiveRecord::Base
 	has_many :beds, dependent: :destroy
 	has_many :house_amenity_relationships, dependent: :destroy
 	has_many :amenities, through: :house_amenity_relationships
+	has_many :photos, class_name: "HousePhoto", dependent: :destroy
 
 	validates :bhk, presence: true
 	validates :no_of_beds, presence: true

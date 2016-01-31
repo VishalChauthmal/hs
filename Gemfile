@@ -34,6 +34,11 @@ gem 'bcrypt',       '3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Images
+gem 'carrierwave',  '0.10.0'
+gem 'mini_magick',  '3.8.0'
+gem 'fog',          '1.36.0'
+
 # Gems added for customization
 gem 'angularjs-rails'
 gem 'bootstrap', '~> 4.0.0.alpha1'
@@ -60,16 +65,10 @@ group :test do
 end
 
 # HEROKU deployment: Below 4 gems
-group :production do
+group :production, :staging do
     gem 'rails_12factor', '0.0.2'
     gem "rails_stdout_logging"
     gem "rails_serve_static_assets"
     gem 'puma'
 end
 # gem 'foreman'
-# group :production, :staging do
-#     gem 'rails_12factor', '0.0.2'
-#     gem "rails_stdout_logging"
-#     gem "rails_serve_static_assets"
-#     gem 'puma'
-# end

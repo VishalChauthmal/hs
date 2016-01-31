@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125114601) do
+ActiveRecord::Schema.define(version: 20160131150911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 20160125114601) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "house_photos", force: :cascade do |t|
+    t.integer  "house_id"
+    t.string   "image"
+    t.string   "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "house_photos", ["house_id"], name: "index_house_photos_on_house_id", using: :btree
 
   create_table "houses", force: :cascade do |t|
     t.string   "type"
@@ -145,6 +155,7 @@ ActiveRecord::Schema.define(version: 20160125114601) do
   add_foreign_key "beds", "tenants"
   add_foreign_key "house_amenity_relationships", "amenities"
   add_foreign_key "house_amenity_relationships", "houses"
+  add_foreign_key "house_photos", "houses"
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
   add_foreign_key "localities", "cities"
