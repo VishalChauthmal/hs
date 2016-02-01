@@ -18,7 +18,25 @@
         <li class="nav-item"><a href="#services" class="nav-link page-scroll">List property</a></li>
         <!--lia.page-scroll(href='#portfolio') Phones
         -->
-        <li class="nav-item"><a class="outline nav-link page-scroll btn-success-outline" data-toggle="modal" data-target=".bd-example-modal-sm">Login</a></li>
+				<% if logged_in? %>
+					<li class="nav-item dropdown">
+    				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
+    				<div class="dropdown-menu">
+							<%= link_to "Dashboard", '#', class: "dropdown-item" %>
+							<%= link_to "Profile", current_user, class: "dropdown-item" %>
+							<%= link_to "Favourites", '#', class: "dropdown-item" %>
+      				<div class="dropdown-divider"></div>
+							<%= link_to "Logout", logout_path, method: "delete", class: "dropdown-item" %>
+    				</div>
+  				</li>
+				
+				<% else %>
+				
+        <li class="nav-item">
+					<a class="outline nav-link page-scroll btn-success-outline" data-toggle="modal" data-target=".bd-example-modal-sm">Login</a>
+				</li>
+				
+				<% end %>
         
       </ul>
         </div>

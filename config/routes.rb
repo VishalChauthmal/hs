@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'results' => 'houses#results'
 
   root 'home#coming_soon'
+	
   post 'house_listing_requests' => 'home#house_listing_request'
   get 'calculator' => 'home#calculator'
 
@@ -12,9 +13,9 @@ Rails.application.routes.draw do
 
 
     get 'signup'    =>  'users#new'
-    # get 'login'     =>  'sessions#new'
-    # post 'login'    =>  'sessions#create'
-    # delete 'logout' =>  'sessions#destroy'
+    get 'login'     =>  'sessions#new'
+    post 'login'    =>  'sessions#create'
+    delete 'logout' =>  'sessions#destroy'
 	resources :users
 
 
