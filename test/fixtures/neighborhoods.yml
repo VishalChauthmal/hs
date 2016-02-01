@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  locality_id: 
+  neighbor_locality_id: 1
+  distance: 1.5
+
+two:
+  locality_id: 
+  neighbor_locality_id: 1
+  distance: 1.5
