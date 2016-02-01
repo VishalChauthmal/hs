@@ -1,0 +1,81 @@
+<!-- New House form - start -->
+<div class="row clearfix" style="margin:50px">
+	<div class="col-xs-4 col-xs-offset-4">
+		<%= form_for @house do |f| %>
+
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :type %>
+			<%= f.text_field :type, class: 'form-control' %>
+
+			<%= f.label :bhk %>
+			<%= f.text_field :bhk, class: 'form-control' %>
+
+			<%= f.label :no_of_beds %>
+			<%= f.text_field :no_of_beds, class: 'form-control' %>
+
+			<%= f.select :allowed_gender, options_for_select([['Male', 'male'], ['Female', 'female']]), { include_blank: 'Gender' }, { class: 'form-control' } %>
+
+			<%= f.collection_select :locality_id, Locality.all, :id, :name, { prompt: 'Select Locality' }, { class: 'form-control' } %>
+
+			<%= f.label :pincode %>
+			<%= f.text_field :pincode, class: 'form-control' %>
+
+			<%= f.label :lat, "Latitude" %>
+			<%= f.text_field :lat, class: 'form-control' %>
+
+			<%= f.label :long, "Longitude" %>
+			<%= f.text_field :long, class: 'form-control' %>
+
+			<%= f.label :address %>
+			<%= f.text_area :address, class: 'form-control' %>
+
+			<%= f.label :landmark %>
+			<%= f.text_field :landmark, class: 'form-control' %>
+
+			<%= f.fields_for :beds do |beds_form| %>
+				<%= beds_form.label :rent %>
+				<%= beds_form.text_field :rent, class: 'form-control' %>
+
+				<%= beds_form.label :security_deposit %>
+				<%= beds_form.text_field :security_deposit, class: 'form-control' %>
+
+				<%= beds_form.label :room_occupancy %>
+				<%= beds_form.text_field :room_occupancy, class: 'form-control' %>
+			<% end %>
+
+			<%= f.submit "Add House", class: "btn btn-block btn-primary" %>
+		<% end %>
+	</div>
+</div>
+<!-- New House form - end -->
+
+
+
+<!-- New HousePhoto form - start -->
+<% if false %>
+<div class="row clearfix" style="margin:50px">
+	<div class="col-xs-4 col-xs-offset-4">
+		<%= form_for(@photo, url: houses_path, html: { multipart: true }) do |f| %>
+
+			<%= f.file_field :image, class: 'form-control' %>
+
+			<%= f.label :caption %>
+			<%= f.text_field :caption, class: 'form-control' %>
+
+			<%= f.submit "Add House Photo", class: "btn btn-block btn-primary" %>
+		<% end %>
+	</div>
+</div>
+<% end %>
+<!-- New HousePhoto form - end -->
+
+
+
+
+<style type="text/css">
+	.form-control {
+		float: both;
+		margin-bottom: 10px;
+	}
+</style>

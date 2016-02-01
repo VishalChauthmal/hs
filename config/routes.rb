@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'houses#search'
   get 'results' => 'houses#results'
+  resources :houses, only: [:new, :create, :show]
 
   root 'home#coming_soon'
   post 'house_listing_requests' => 'home#house_listing_request'
