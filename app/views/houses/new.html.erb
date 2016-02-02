@@ -5,8 +5,8 @@
 
 			<%= render 'shared/error_messages', object: f.object %>
 
-			<%= f.label :type %>
-			<%= f.text_field :type, class: 'form-control' %>
+			<%= f.label :category %>
+			<%= f.text_field :category, class: 'form-control' %>
 
 			<%= f.label :bhk %>
 			<%= f.text_field :bhk, class: 'form-control' %>
@@ -43,6 +43,14 @@
 				<%= beds_form.label :room_occupancy %>
 				<%= beds_form.text_field :room_occupancy, class: 'form-control' %>
 			<% end %>
+
+			<%#= f.fields_for :photos do |photos_form| %>
+				<%#= photos_form.label :caption %>
+				<%#= photos_form.text_field :caption, class: 'form-control' %>
+
+				<!-- House Photo -->
+				<%#= photos_form.file_field :image, class: 'form-control' %>
+			<%# end %>
 
 			<%= f.submit "Add House", class: "btn btn-block btn-primary" %>
 		<% end %>

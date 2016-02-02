@@ -35,12 +35,4 @@ class House < ActiveRecord::Base
 			House.all
 		end
 	end
-
-	private
-
-		# To avoid the error "Invalid single-table inheritance type: Apartment is not a subclass of House" when type is Apartment
-		# Because "type" is a special, reserved column name
-		def self.inheritance_column
-			nil
-  	end
 end
