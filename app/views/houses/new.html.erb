@@ -1,7 +1,7 @@
 <!-- New House form - start -->
 <div class="row clearfix" style="margin:50px">
 	<div class="col-xs-4 col-xs-offset-4">
-		<%= form_for @house do |f| %>
+		<%= form_for(@house, html: { multipart: true }) do |f| %>
 
 			<%= render 'shared/error_messages', object: f.object %>
 
@@ -52,16 +52,35 @@
 				<%#= photos_form.file_field :image, class: 'form-control' %>
 			<%# end %>
 
+			<%= f.fields_for :photos do |photos_form| %>
+				<%= photos_form.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control', id: 'house-image-input' %>
+
+				<%= photos_form.label :caption %>
+				<%= photos_form.text_field :caption, class: 'form-control' %>
+			<% end %>
+
 			<%= f.submit "Add House", class: "btn btn-block btn-primary" %>
 		<% end %>
 	</div>
 </div>
 <!-- New House form - end -->
 
+<!-- Client side Image Size Validation - start -->
+<script type="text/javascript">
+	$('#house-image-input').bind('change', function() {
+		var size_in_megabytes = this.files[0].size/1024/1024;
+		if (size_in_megabytes > 2) {
+			alert('Maximum file size is 2MB. Please choose a smaller file.');
+		}
+	});
+</script>
+<!-- Client side Image Size Validation - end -->
+
 
 
 <!-- New HousePhoto form - start -->
 <% if false %>
+
 <div class="row clearfix" style="margin:50px">
 	<div class="col-xs-4 col-xs-offset-4">
 		<%= form_for(@photo, url: houses_path, html: { multipart: true }) do |f| %>
@@ -75,6 +94,7 @@
 		<% end %>
 	</div>
 </div>
+
 <% end %>
 <!-- New HousePhoto form - end -->
 

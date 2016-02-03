@@ -9,9 +9,7 @@ class HousesController < ApplicationController
 	def new
 		@house = House.new
 		@house.beds.build
-
-		# @house = House.new
-		# @house.photos.build
+		@house.photos.build
 	end
 
 	def create
@@ -34,6 +32,7 @@ class HousesController < ApplicationController
 		def house_params
 			params.require(:house).permit(:category, :bhk, :no_of_beds, :allowed_gender, 
 																		:locality_id, :pincode, :lat, :long, :address, :landmark, 
-																		beds_attributes: [:id, :rent, :security_deposit, :room_occupancy])
+																		beds_attributes: [:id, :rent, :security_deposit, :room_occupancy],
+																		photos_attributes: [:id, :image, :caption])
 		end
 end
