@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'home/search'
+	get 'home/single_view'
 
 
     get 'signup'    =>  'users#new'

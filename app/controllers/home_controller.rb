@@ -8,6 +8,9 @@ class HomeController < ApplicationController
 	def coming_soon
 		@house_listing_request = HouseListingRequest.new()
 	end
+	
+	def single_view
+	end
 
 	def house_listing_request
 		@house_listing_request = HouseListingRequest.new(house_listing_request_params)
