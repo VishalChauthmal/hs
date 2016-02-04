@@ -1,10 +1,13 @@
 class House < ActiveRecord::Base
 	belongs_to :owner
 	belongs_to :locality
-	has_many :beds, dependent: :destroy
+	has_many :beds, inverse_of: :house, dependent: :destroy
 	has_many :house_amenity_relationships, dependent: :destroy
 	has_many :amenities, through: :house_amenity_relationships
-	has_many :photos, class_name: "HousePhoto", dependent: :destroy
+	has_many :photos, class_name: "HousePhoto", inverse_of: :house, dependent: :destroy
+
+	accepts_nested_attributes_for :beds
+	accepts_nested_attributes_for :photos
 
 	validates :bhk, presence: true
 	validates :no_of_beds, presence: true
