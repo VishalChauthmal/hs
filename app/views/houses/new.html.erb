@@ -88,6 +88,8 @@
 	<div class="col-xs-4 col-xs-offset-4">
 		<%= form_for(@photo, url: houses_path, html: { multipart: true }) do |f| %>
 
+			<%= render 'shared/error_messages', object: f.object %>
+
 			<%= f.file_field :image, class: 'form-control' %>
 
 			<%= f.label :caption %>

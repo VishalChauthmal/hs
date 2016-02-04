@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :house_photos, only: [:create, :index, :destroy]
+	resources :tenant_visits, only: [:create]
+
+	resources :house_photos, only: [:create, :index, :destroy]
 
 	resources :houses, only: [:new, :create, :show]
 

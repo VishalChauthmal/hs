@@ -26,7 +26,7 @@
 	<% end %>
 </div>
 
-<div style="text-align:center; padding-top:25x;" class="clearfix">
+<div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">
 	<div class="col-xs-6">
 		<h3>Photos</h3>
 		<% @photos = @house.photos %>
@@ -43,6 +43,8 @@
 		<h3>Add new photo of this house</h3>
 		<div class="clearfix" style="margin:35px 50px">
 				<%= form_for(@house.photos.build, html: { multipart: true }) do |f| %>
+
+					<%= render 'shared/error_messages', object: f.object %>
 
 					<%= hidden_field_tag :house_id, @house.id %>
 
@@ -65,3 +67,32 @@
 		margin-bottom: 10px;
 	}
 </style>
+
+
+
+
+
+<div style="text-align:center; padding-top:25px;" class="clearfix">
+	<h3>Shedule visit for this house</h3>
+	<div class="row clearfix" style="margin:50px">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= form_for(@house.tenant_visits.build) do |f| %>
+
+				<%= render 'shared/error_messages', object: f.object %>
+
+				<%= hidden_field_tag :house_id, @house.id %>
+
+				<%= f.label :name %>
+				<%= f.text_field :name, required: true, class: 'form-control' %>
+
+				<%= f.label :phone %>
+				<%= f.text_field :phone, required: true, class: 'form-control' %>
+
+				<%= f.label :email %>
+				<%= f.email_field :email, class: 'form-control' %>
+
+				<%= f.submit "Schedule Visit", class: "btn btn-block btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+</div>
