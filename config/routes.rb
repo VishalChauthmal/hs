@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 	get 'search' => 'houses#search'
 	get 'results' => 'houses#results'
+	get 'search_results' => 'home#search'
 
 
 	root 'home#coming_soon'

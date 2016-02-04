@@ -5,6 +5,10 @@ class HomeController < ApplicationController
 	def search
 	end
 
+	def search
+		@houses = House.limit(3)
+	end
+
 	def coming_soon
 		@house_listing_request = HouseListingRequest.new()
 	end
