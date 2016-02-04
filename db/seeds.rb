@@ -18,14 +18,14 @@ Locality.create!(name: "Prabhadevi", city_id: 1)
 Locality.create!(name: "Bandra", city_id: 1)
 
 House.create!(#type, owner,
-							bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 1, #pincode, lat, long, landmark,
+							title: "ABC Society", bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 1, #pincode, lat, long, landmark,
 							address: "Flat No. 904, Alpha Society, Opp. Beta Restaurant, JVLR Road")
-House.create!(bhk: 3, no_of_beds: 5, allowed_gender: "female", locality_id: 2, address: "Flat No. 102, A Society, Opp. CCD, JP Road")
-House.create!(bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 3, address: "Flat No. 331, A Society, Opp. ABC, XYZ Road")
-House.create!(bhk: 3, no_of_beds: 6, allowed_gender: "female", locality_id: 4, address: "Flat No. 441, A Society, Opp. ABC, XYZ Road")
-House.create!(bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 5, address: "Flat No. 551, A Society, Opp. ABC, XYZ Road")
-House.create!(bhk: 3, no_of_beds: 5, allowed_gender: "male", locality_id: 6, address: "Flat No. 627, A Society, Opp. ABC, XYZ Road")
-House.create!(bhk: 2, no_of_beds: 4, allowed_gender: "female", locality_id: 7, address: "Flat No. 792, A Society, Opp. ABC, XYZ Road")
+House.create!(title: "Sadan", bhk: 3, no_of_beds: 5, allowed_gender: "female", locality_id: 2, address: "Flat No. 102, A Society, Opp. CCD, JP Road")
+House.create!(title: "Nivas",bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 3, address: "Flat No. 331, A Society, Opp. ABC, XYZ Road")
+House.create!(title: "Shree Nivas", bhk: 3, no_of_beds: 6, allowed_gender: "female", locality_id: 4, address: "Flat No. 441, A Society, Opp. ABC, XYZ Road")
+House.create!(title: "Sample Title", bhk: 2, no_of_beds: 4, allowed_gender: "male", locality_id: 5, address: "Flat No. 551, A Society, Opp. ABC, XYZ Road")
+House.create!(title: "House Title", bhk: 3, no_of_beds: 5, allowed_gender: "male", locality_id: 6, address: "Flat No. 627, A Society, Opp. ABC, XYZ Road")
+House.create!(title: "Housing Society",bhk: 2, no_of_beds: 4, allowed_gender: "female", locality_id: 7, address: "Flat No. 792, A Society, Opp. ABC, XYZ Road")
 
 
 Bed.create!(house_id: 1, #tenant_id,
