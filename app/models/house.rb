@@ -1,10 +1,13 @@
 class House < ActiveRecord::Base
+	before_save { self.pincode = pincode.gsub(/\s+/, "") }
+
 	belongs_to :owner
 	belongs_to :locality
 	has_many :beds, inverse_of: :house, dependent: :destroy
 	has_many :house_amenity_relationships, dependent: :destroy
 	has_many :amenities, through: :house_amenity_relationships
 	has_many :photos, class_name: "HousePhoto", inverse_of: :house, dependent: :destroy
+	has_many :tenant_visits
 
 	accepts_nested_attributes_for :beds
 	accepts_nested_attributes_for :photos
