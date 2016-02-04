@@ -9,6 +9,7 @@ class House < ActiveRecord::Base
 	accepts_nested_attributes_for :beds
 	accepts_nested_attributes_for :photos
 
+	validates :title, presence: true
 	validates :bhk, presence: true
 	validates :no_of_beds, presence: true
 	validates :allowed_gender, presence: true

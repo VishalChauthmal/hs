@@ -30,7 +30,7 @@ class HousesController < ApplicationController
 	private
 
 		def house_params
-			params.require(:house).permit(:category, :bhk, :no_of_beds, :allowed_gender, 
+			params.require(:house).permit(:category, :title, :bhk, :no_of_beds, :allowed_gender, 
 																		:locality_id, :pincode, :lat, :long, :address, :landmark, 
 																		beds_attributes: [:id, :rent, :security_deposit, :room_occupancy],
 																		photos_attributes: [:id, :image, :caption])
