@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	end
 
 	def search
-		@houses = House.limit(3)
+		# @houses = House.limit(3)
 	end
 
 	def coming_soon
