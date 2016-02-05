@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	end
 
 	def search
-		# @houses = House.limit(3)
+		@houses = House.all
 	end
 
 	def coming_soon
@@ -14,6 +14,7 @@ class HomeController < ApplicationController
 	end
 	
 	def single_view
+		@house = House.find(1)
 	end
 
 	def house_listing_request

@@ -86,3 +86,88 @@
 </div>
 		</div>
 	</div>
+
+
+
+
+<h2 style="text-align:center; margin-top:100px; padding-top:10px; border-top:3px solid black;">Imported from back-end</h2>
+
+
+<!-- House details - start -->
+<h3 style="text-align:center; text-decoration:underline;">House Details</h3>
+
+<div style="border-bottom:1px solid gray; padding:7.5px 25px;">
+  <div style="color:blue;">House</div>
+  <div>House ID: <%= @house.id %></div>
+  <div>Address: <%= @house.address %></div>
+  <div>BHK: <%= @house.bhk %></div>
+  <div>No. of Beds: <%= @house.no_of_beds %></div>
+  <div>Allowed Gender: <%= @house.allowed_gender %></div>
+  <div>Locality: <%= @house.locality.name %></div>
+  <div>City: <%= @house.locality.city.name %></div>
+
+  <div style="margin: 5px 25px;">
+    <div style="color:cadetblue;">Amenities</div>
+    <% @house.amenities.each do |amenity| %>
+      <div><%= amenity.name %></div>
+    <% end %>
+  </div>
+
+  <% @beds = @house.beds %>
+  <% @beds.each do |bed| %>
+      <div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+          <div style="color:drakgray;">Bed</div>
+          <div>rent: <strong><%= bed.rent %></strong></div>
+          <div>security_deposit: <%= bed.security_deposit %></div>
+          <div>room_occupancy: <%= bed.room_occupancy %></div>
+      </div>
+  <% end %>
+</div>
+
+<!-- House photos - start -->
+<% if false %>
+  <div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">
+    <div class="col-xs-6">
+      <h3>Photos</h3>
+      <% @photos = @house.photos %>
+      <% @photos.each do |photo| %>
+        <div style="margin-top:35px;">
+          <div>Photo ID: <%= photo.id %> | House ID: <%= photo.house_id %> | Caption: <%= photo.caption %></div>
+          <%= image_tag photo.image.url if photo.image? %>
+          <hr style="max-width:400px;">
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<!-- House photos - end -->
+
+<!-- House details - end -->
+
+
+<!-- Form for scheduling a visit - start -->
+<div style="text-align:center; padding-top:25px;" class="clearfix">
+  <h4>Shedule visit for this house</h4>
+  <div class="row clearfix" style="margin:50px">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= form_for(@house.tenant_visits.build) do |f| %>
+
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= hidden_field_tag :house_id, @house.id %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, required: true, class: 'form-control' %>
+
+        <%= f.label :phone %>
+        <%= f.text_field :phone, required: true, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.submit "Schedule Visit", class: "btn btn-block btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- Form for scheduling a visit - end -->

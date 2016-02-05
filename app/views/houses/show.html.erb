@@ -39,24 +39,26 @@
 		<% end %>
 	</div>
 
-	<!-- <div class="col-xs-6">
-		<h3>Add new photo of this house</h3>
-		<div class="clearfix" style="margin:35px 50px">
-				<%= form_for(@house.photos.build, html: { multipart: true }) do |f| %>
+	<% if false %>
+		<div class="col-xs-6">
+			<h3>Add new photo of this house</h3>
+			<div class="clearfix" style="margin:35px 50px">
+					<%= form_for(@house.photos.build, html: { multipart: true }) do |f| %>
 
-					<%= render 'shared/error_messages', object: f.object %>
+						<%= render 'shared/error_messages', object: f.object %>
 
-					<%= hidden_field_tag :house_id, @house.id %>
+						<%= hidden_field_tag :house_id, @house.id %>
 
-					<%= f.file_field :image, class: 'form-control' %>
+						<%= f.file_field :image, class: 'form-control' %>
 
-					<%= f.label :caption %>
-					<%= f.text_field :caption, class: 'form-control' %>
+						<%= f.label :caption %>
+						<%= f.text_field :caption, class: 'form-control' %>
 
-					<%= f.submit "Add House Photo", class: "btn btn-block btn-primary" %>
-				<% end %>
+						<%= f.submit "Add House Photo", class: "btn btn-block btn-primary" %>
+					<% end %>
+			</div>
 		</div>
-	</div> -->
+	<% end %>
 </div>
 
 
@@ -71,7 +73,7 @@
 
 
 
-
+<!-- Form for scheduling a visit - start -->
 <div style="text-align:center; padding-top:25px;" class="clearfix">
 	<h3>Shedule visit for this house</h3>
 	<div class="row clearfix" style="margin:50px">
@@ -96,3 +98,4 @@
 		</div>
 	</div>
 </div>
+<!-- Form for scheduling a visit - end -->

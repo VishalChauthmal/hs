@@ -1,4 +1,6 @@
 <!-- New House form - start -->
+<% if false %>
+
 <div class="row clearfix" style="margin:50px">
 	<div class="col-xs-4 col-xs-offset-4">
 		<%= form_for(@house, html: { multipart: true }) do |f| %>
@@ -66,9 +68,13 @@
 		<% end %>
 	</div>
 </div>
+
+<% end %>
 <!-- New House form - end -->
 
 <!-- Client side Image Size Validation - start -->
+<% if false %>
+
 <script type="text/javascript">
 	$('#house-image-input').bind('change', function() {
 		var size_in_megabytes = this.files[0].size/1024/1024;
@@ -77,6 +83,8 @@
 		}
 	});
 </script>
+
+<% end %>
 <!-- Client side Image Size Validation - end -->
 
 

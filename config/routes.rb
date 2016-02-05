@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
 	resources :tenant_visits, only: [:create]
 
-	resources :house_photos, only: [:create, :index, :destroy]
+	# Temporarily commented for v1 launch
+	# resources :house_photos, only: [:create, :index, :destroy]
 
-	resources :houses, only: [:new, :create, :show]
+	# Temporarily commented for v1 launch
+	# resources :houses, only: [:new, :create, :show]
+	resources :houses, only: [:show]
 
 	get 'search' => 'houses#search'
 	get 'results' => 'houses#results'
