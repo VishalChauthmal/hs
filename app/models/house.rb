@@ -1,5 +1,5 @@
 class House < ActiveRecord::Base
-	before_save { self.pincode = pincode.gsub(/\s+/, "") }
+	before_save { self.pincode = pincode.gsub(/\s+/, "") unless self.pincode.blank?	}
 
 	belongs_to :owner
 	belongs_to :locality

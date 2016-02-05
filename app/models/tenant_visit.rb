@@ -1,7 +1,7 @@
 class TenantVisit < ActiveRecord::Base
 	before_save { 
-		self.email = email.downcase
-		self.phone = phone.gsub(/\s+/, "")
+		self.email = email.downcase unless self.email.blank?
+		self.phone = phone.gsub(/\s+/, "") unless self.phone.blank?
 	}
 
 	belongs_to :house
