@@ -40,99 +40,99 @@ House.find(3).house_amenity_relationships.create!(amenity_id: 1)
 Amenity.create!(name: "AC", category: "bedroom")			# AC in Bedroom
 
 Amenity.create!(name: "Dining Table", category: "living room")
-House.find(1).house_amenity_relationships.create!(amenity_id: 2)
-
-Amenity.create!(name: "Fridge", category: "kitchen")
 House.find(1).house_amenity_relationships.create!(amenity_id: 3)
 
-Amenity.create!(name: "Gas Stove", category: "kitchen")
+Amenity.create!(name: "Fridge", category: "kitchen")
 House.find(1).house_amenity_relationships.create!(amenity_id: 4)
 
-Amenity.create!(name: "Crockery Set", category: "kitchen")
+Amenity.create!(name: "Gas Stove", category: "kitchen")
 House.find(1).house_amenity_relationships.create!(amenity_id: 5)
 
-Amenity.create!(name: "Sofa", category: "living room")
+Amenity.create!(name: "Crockery Set", category: "kitchen")
 House.find(1).house_amenity_relationships.create!(amenity_id: 6)
 
-Amenity.create!(name: "Television", category: "living room")
+Amenity.create!(name: "Sofa", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 7)
 
-Amenity.create!(name: "Washing Machine", category: "bathroom")
+Amenity.create!(name: "Television", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 8)
 
-Amenity.create!(name: "WiFi", category: "living room")
+Amenity.create!(name: "Washing Machine", category: "bathroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 9)
 
-Amenity.create!(name: "DTH", category: "living room")
+Amenity.create!(name: "WiFi", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 10)
 
-Amenity.create!(name: "Attached Bathroom", category: "bathroom")
+Amenity.create!(name: "DTH", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 11)
-House.find(2).house_amenity_relationships.create!(amenity_id: 11)
-House.find(3).house_amenity_relationships.create!(amenity_id: 11)
 
-Amenity.create!(name: "Geyser", category: "bathroom")
+Amenity.create!(name: "Attached Bathroom", category: "bathroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 12)
 House.find(2).house_amenity_relationships.create!(amenity_id: 12)
 House.find(3).house_amenity_relationships.create!(amenity_id: 12)
 
-Amenity.create!(name: "Western Toilet", category: "bathroom")
+Amenity.create!(name: "Geyser", category: "bathroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 13)
 House.find(2).house_amenity_relationships.create!(amenity_id: 13)
 House.find(3).house_amenity_relationships.create!(amenity_id: 13)
 
-Amenity.create!(name: "Cupboard", category: "bedroom")
+Amenity.create!(name: "Western Toilet", category: "bathroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 14)
+House.find(2).house_amenity_relationships.create!(amenity_id: 14)
 House.find(3).house_amenity_relationships.create!(amenity_id: 14)
 
-Amenity.create!(name: "Bed", category: "bedroom")
+Amenity.create!(name: "Cupboard", category: "bedroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 15)
+House.find(3).house_amenity_relationships.create!(amenity_id: 15)
 
-Amenity.create!(name: "Mattresses", category: "bedroom")
+Amenity.create!(name: "Bed", category: "bedroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 16)
 
-Amenity.create!(name: "TV Unit", category: "living room")
+Amenity.create!(name: "Mattresses", category: "bedroom")
 House.find(1).house_amenity_relationships.create!(amenity_id: 17)
 
-Amenity.create!(name: "Centre Table", category: "living room")
+Amenity.create!(name: "TV Unit", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 18)
 
-Amenity.create!(name: "Shoe Rack", category: "living room")
+Amenity.create!(name: "Centre Table", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 19)
 
-Amenity.create!(name: "Gas Pipeline", category: "kitchen")
+Amenity.create!(name: "Shoe Rack", category: "living room")
 House.find(1).house_amenity_relationships.create!(amenity_id: 20)
 
-Amenity.create!(name: "Swimming Pool", category: "society")
+Amenity.create!(name: "Gas Pipeline", category: "kitchen")
 House.find(1).house_amenity_relationships.create!(amenity_id: 21)
 
-Amenity.create!(name: "Gym", category: "society")
+Amenity.create!(name: "Swimming Pool", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 22)
-House.find(3).house_amenity_relationships.create!(amenity_id: 22)
 
-Amenity.create!(name: "Indoor Games", category: "society")
+Amenity.create!(name: "Gym", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 23)
 House.find(3).house_amenity_relationships.create!(amenity_id: 23)
 
-Amenity.create!(name: "Playing Area", category: "society")
+Amenity.create!(name: "Indoor Games", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 24)
-House.find(2).house_amenity_relationships.create!(amenity_id: 24)
 House.find(3).house_amenity_relationships.create!(amenity_id: 24)
 
-Amenity.create!(name: "Parking", category: "society")
+Amenity.create!(name: "Playing Area", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 25)
 House.find(2).house_amenity_relationships.create!(amenity_id: 25)
 House.find(3).house_amenity_relationships.create!(amenity_id: 25)
 
-Amenity.create!(name: "Lift", category: "society")
+Amenity.create!(name: "Parking", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 26)
 House.find(2).house_amenity_relationships.create!(amenity_id: 26)
 House.find(3).house_amenity_relationships.create!(amenity_id: 26)
 
-Amenity.create!(name: "Security", category: "society")
+Amenity.create!(name: "Lift", category: "society")
 House.find(1).house_amenity_relationships.create!(amenity_id: 27)
 House.find(2).house_amenity_relationships.create!(amenity_id: 27)
 House.find(3).house_amenity_relationships.create!(amenity_id: 27)
+
+Amenity.create!(name: "Security", category: "society")
+House.find(1).house_amenity_relationships.create!(amenity_id: 28)
+House.find(2).house_amenity_relationships.create!(amenity_id: 28)
+House.find(3).house_amenity_relationships.create!(amenity_id: 28)
 
 
 

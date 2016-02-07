@@ -1,0 +1,18 @@
+<% unless category_amenities.blank? %>
+	<div class="card">
+		<div class="card-header">
+    	<%= "#{category_heading}" %>
+  	</div>
+		<div class="card-block">
+			<div class="list-group">
+				<div class="container">
+					<% category_amenities.each do |amenity| %>
+						<div class="col-xs-6">
+							<li class="list-group-item"><%= amenity.name %></li>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>

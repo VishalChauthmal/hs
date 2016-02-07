@@ -25,6 +25,11 @@ class HousesController < ApplicationController
 
 	def show
 		@house = House.find(params[:id])
+		@living_room_amenities = @house.amenities.where("category = ?", "living room")
+		@kitchen_amenities = @house.amenities.where("category = ?", "kitchen")
+		@bedroom_amenities = @house.amenities.where("category = ?", "bedroom")
+		@bathroom_amenities = @house.amenities.where("category = ?", "bathroom")
+		@society_amenities = @house.amenities.where("category = ?", "society")
 	end
 
 	private
