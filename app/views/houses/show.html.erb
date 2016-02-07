@@ -69,7 +69,7 @@
 				</div>
   </div>
 
-
+  <!-- Category-wise Amenities - start -->
 
 	<%= render 'category_amenities', { category_amenities: @living_room_amenities, category_heading: "Living Room Amenities" } %>
 
@@ -81,8 +81,52 @@
 
 	<%= render 'category_amenities', { category_amenities: @society_amenities, category_heading: "Society Amenities" } %>
 
+  <!-- Category-wise Amenities - end -->
 
 
+	<div class="card">
+		<div class="card-header">
+    House Details
+  	</div>
+		<div class="card-block">
+			<table class="table table-hover">
+  <tbody>
+    <tr>
+      <th scope="row">HS House ID</th>
+      <td><%= @house.id %></td>
+    </tr>
+		<tr>
+      <th scope="row">House title</th>
+      <td><%= @house.title %></td>
+    </tr>
+		<tr>
+      <th scope="row">Address</th>
+      <td><%= @house.address %></td>
+    </tr>
+		<tr>
+      <th scope="row">No. of BHK</th>
+      <td><%= @house.bhk %></td>
+    </tr>
+		<tr>
+      <th scope="row">No. of Beds</th>
+      <td><%= @house.no_of_beds %></td>
+    </tr>
+		<tr>
+      <th scope="row">Allowed Gender</th>
+      <td><%= @house.allowed_gender %></td>
+    </tr>
+		<tr>
+      <th scope="row">Locality</th>
+      <td><%= @house.locality.name %></td>
+    </tr>
+		<tr>
+      <th scope="row">City</th>
+      <td><%= @house.locality.city.name %></td>
+    </tr>
+  </tbody>
+</table>
+		</div>
+	</div>
 	<div class="card">
 		<div class="card-header">
     House Details
