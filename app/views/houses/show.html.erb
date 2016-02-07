@@ -103,7 +103,6 @@
 					<div class="col-xs-6">
   					<li class="list-group-item">Community Hall</li>
 					</div>
-				<% end %>
 				</div>
 			</div>
 		</div>
@@ -122,13 +121,13 @@
 
 				<%= hidden_field_tag :house_id, @house.id %>
 
-<!--				<%= f.label :name %>-->
+				<%#= f.label :name %>
 				<%= f.text_field :name, required: true, class: 'form-control', placeholder: 'Name' %>
 
-<!--				<%= f.label :phone %>-->
+				<%#= f.label :phone %>
 				<%= f.text_field :phone, required: true, class: 'form-control', placeholder: 'Phone' %>
 
-<!--				<%= f.label :email %>-->
+				<%#= f.label :email %>
 				<%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
 
 				<%= f.submit "Schedule a Visit", class: "btn btn-primary" %>
