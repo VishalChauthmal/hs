@@ -25,12 +25,10 @@ House.create!(title: "Lodha Aurum", bhk: 2, no_of_beds: 4, allowed_gender: "any"
 							locality_id: 2, address: "Lodha Aurum Grande, Kanjurmarg East - 400042")
 
 
-
 TenantType.create!(name: "family")
 TenantType.create!(name: "bachelor_male")
 TenantType.create!(name: "bachelor_female")
 TenantType.create!(name: "company")
-
 
 
 House.find(1).house_tenant_type_relationships.create!(tenant_type_id: 1)
@@ -42,12 +40,20 @@ House.find(2).house_tenant_type_relationships.create!(tenant_type_id: 3)
 House.find(3).house_tenant_type_relationships.create!(tenant_type_id: 1)
 
 
+2.times { Room.create!(house_id: 1, #tenant_id,
+											rent: 47000/2, security_deposit: 200000/2, room_occupancy: 1) }
+2.times { Room.create!(house_id: 2, rent: 49000/2, security_deposit: 130000/2, room_occupancy: 1) }
+2.times { Room.create!(house_id: 3, rent: 45000/2, security_deposit: 200000/2, room_occupancy: 1) }
 
-4.times { Bed.create!(house_id: 1, #tenant_id,
+
+2.times { Bed.create!(room_id: 1, #tenant_id,
 											rent: 47000/4, security_deposit: 200000/4, room_occupancy: 2) }
-4.times { Bed.create!(house_id: 2, rent: 49000/4, security_deposit: 130000/4, room_occupancy: 2) }
-4.times { Bed.create!(house_id: 3, rent: 45000/4, security_deposit: 200000/4, room_occupancy: 2) }
-
+2.times { Bed.create!(room_id: 2, #tenant_id,
+											rent: 47000/4, security_deposit: 200000/4, room_occupancy: 2) }
+2.times { Bed.create!(room_id: 3, rent: 49000/4, security_deposit: 130000/4, room_occupancy: 2) }
+2.times { Bed.create!(room_id: 4, rent: 49000/4, security_deposit: 130000/4, room_occupancy: 2) }
+2.times { Bed.create!(room_id: 5, rent: 45000/4, security_deposit: 200000/4, room_occupancy: 2) }
+2.times { Bed.create!(room_id: 6, rent: 45000/4, security_deposit: 200000/4, room_occupancy: 2) }
 
 
 Amenity.create!(name: "AC", category: "living room")	# AC in Living Room
