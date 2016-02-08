@@ -25,11 +25,17 @@ class HousesController < ApplicationController
 
 	def show
 		@house = House.find(params[:id])
-		@living_room_amenities = @house.amenities.where("category = ?", "living room")
-		@kitchen_amenities = @house.amenities.where("category = ?", "kitchen")
-		@bedroom_amenities = @house.amenities.where("category = ?", "bedroom")
-		@bathroom_amenities = @house.amenities.where("category = ?", "bathroom")
-		@society_amenities = @house.amenities.where("category = ?", "society")
+		
+		all_house_amenities = @house.amenities
+		@living_room_amenities = all_house_amenities.where("category = ?", "living room")
+		@kitchen_amenities = all_house_amenities.where("category = ?", "kitchen")
+		@bedroom_amenities = all_house_amenities.where("category = ?", "bedroom")
+		@bathroom_amenities = all_house_amenities.where("category = ?", "bathroom")
+		@society_amenities = all_house_amenities.where("category = ?", "society")
+
+		@rooms = @house.rooms
+		room_ids = @rooms.pluck(:id)
+		@beds = Bed.where("room_id IN (?)", room_ids)
 	end
 
 	private
