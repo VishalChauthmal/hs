@@ -49,6 +49,7 @@ GEM
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bower-rails (0.10.0)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -330,6 +331,7 @@ DEPENDENCIES
   angularjs-rails
   bcrypt (= 3.1.7)
   bootstrap (~> 4.0.0.alpha1)
+  bower-rails
   byebug (= 3.4.0)
   carrierwave (= 0.10.0)
   coffee-rails (= 4.1.0)
@@ -353,3 +355,6 @@ DEPENDENCIES
   turbolinks (= 2.3.0)
   uglifier (= 2.5.3)
   web-console (= 2.0.0.beta3)
+
+BUNDLED WITH
+   1.10.6
