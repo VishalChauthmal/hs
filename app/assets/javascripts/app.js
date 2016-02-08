@@ -1,8 +1,17 @@
 (function(){
-    var app = angular.module('store', []);
-    app.controller('HouseController', function(){
-        this.products = houses;
-    });
+	var app = angular.module('homestayz', []);
+ 	app.controller('HouseController', function(){
+  	this.products = houses;
+ 	});
+	app.controller('RentController', function(){
+		this.tab = 1;
+		this.selectTab = function(setTab) {
+			this.tab = setTab;
+		};
+		this.isSelected = function(checkTab) {
+			return this.tab === checkTab;
+		};
+	});
     
     var houses = [
         {

@@ -1,8 +1,5 @@
 <% unless category_amenities.blank? %>
-	<div class="card">
-		<div class="card-header">
-    	<%= "#{category_heading}" %>
-  	</div>
+  	<h5 class="card-title"><%= "#{category_heading}" %></h5>
 		<div class="card-block">
 			<div class="list-group">
 				<div class="container">
@@ -14,5 +11,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
 <% end %>
