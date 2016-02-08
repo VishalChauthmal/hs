@@ -36,7 +36,6 @@ gem 'bcrypt',       '3.1.7'
 
 # Use Bower-rails to manage front-end dependcies
 gem 'bower-rails'
-gem 'angular-rails-templates'
 
 # Images
 gem 'carrierwave',  '0.10.0'
