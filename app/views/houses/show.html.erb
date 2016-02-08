@@ -47,10 +47,103 @@
   </div>
 -->
 </div>
-	<div class="card">
-  <div class="card-header">
-    Lodha Aurum - 3 BHK
+	<div class="card" ng-controller="RentController as panel">
+		<div class="card-block">
+  		<h4 class="card-title">Rent Details</h4>
+		</div>										
+		<div class="card-block">
+    	<ul class="nav nav-pills">
+  			<li class="nav-item">
+    			<a href class="nav-link" ng-class="{ active:panel.isSelected(1)}" ng-click="panel.selectTab(1)">Beds</a>
+  			</li>
+				<li class="nav-item">
+    			<a href class="nav-link" ng-class="{ active:panel.isSelected(2)}" ng-click="panel.selectTab(2)">Rooms</a>
+  			</li>
+			</ul>
+		</div>
+		<div class="card-block">
+    	<div class="panel" ng-show="panel.isSelected(1) ">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Room</th>
+      				<th>Bed</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+    				<tr>
+      				<td rowspan="2">Room 1</td>
+      				<td>Bed 1</td>
+      				<td>INR 40,000</td>
+      				<th scope="row">INR 13,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 40,000</td>
+      				<th scope="row">INR 13,000</th>
+    				</tr>
+    				<tr>
+      				<td rowspan="2">Room 2</td>
+      				<td>Bed 1</td>
+      				<td>INR 42,000</td>
+      				<th scope="row">INR 14,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 42,000</td>
+      				<th scope="row">INR 14,000</th>
+    				</tr>
+						<tr>
+      				<td rowspan="2">Room 3</td>
+      				<td>Bed 1</td>
+      				<td>INR 48,000</td>
+      				<th scope="row">INR 16,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 48,000</td>
+      				<th scope="row">INR 16,000</th>
+    				</tr>
+  				</tbody>
+				</table>
+
+			</div>
+			<div class="panel" ng-show="panel.isSelected(2)">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Room</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+    				<tr class="table-success">
+							<td>Room 1</td>
+      				<td>INR 80,000</td>
+      				<th scope="row">INR 26,000</th>
+    				</tr>
+						<tr class="table-success">
+							<td>Room 2</td>
+      				<td>INR 84,000</td>
+      				<th scope="row">INR 28,000</th>
+    				</tr>
+						<tr class="table-danger">
+							<td>Room 3</td>
+      				<td>INR 96,000</td>
+      				<th scope="row">INR 32,000</th>
+    				</tr>
+  				</tbody>
+				</table>
+			</div>
+		</div>
   </div>
+	<div class="card">
+		<div class="card-block">
+  		<h4 class="card-title">House Owner</h4>
+		</div>										
   <div class="card-block">
 		<div class="row">
 			<div class="col-xs-3">
@@ -63,32 +156,36 @@
 		</div>
 				</div>
 				<div class="card-block">
-		<div class="row">
     <a href="#" class="btn btn-primary">Go somewhere</a>
-		</div>
 				</div>
   </div>
 
   <!-- Category-wise Amenities - start -->
+	
+	<div class="card">
+		<div class="card-block">
+  		<h4 class="card-title">Amenities</h4>
+		</div>
+		<div class="card-block">
+				<div class="container">
+					<%= render 'category_amenities', { category_amenities: @living_room_amenities, category_heading: "Living Room Amenities" } %>
+					<%= render 'category_amenities', { category_amenities: @kitchen_amenities, category_heading: "Kitchen Amenities" } %>
+					<%= render 'category_amenities', { category_amenities: @bedroom_amenities, category_heading: "Bedroom Amenities" } %>
+					<%= render 'category_amenities', { category_amenities: @bathroom_amenities, category_heading: "Bathroom Amenities" } %>
+					<%= render 'category_amenities', { category_amenities: @society_amenities, category_heading: "Society Amenities" } %>
+				</div>
+		</div>
+	</div>
 
-	<%= render 'category_amenities', { category_amenities: @living_room_amenities, category_heading: "Living Room Amenities" } %>
-
-	<%= render 'category_amenities', { category_amenities: @kitchen_amenities, category_heading: "Kitchen Amenities" } %>
-
-	<%= render 'category_amenities', { category_amenities: @bedroom_amenities, category_heading: "Bedroom Amenities" } %>
-
-	<%= render 'category_amenities', { category_amenities: @bathroom_amenities, category_heading: "Bathroom Amenities" } %>
-
-	<%= render 'category_amenities', { category_amenities: @society_amenities, category_heading: "Society Amenities" } %>
+	
 
   <!-- Category-wise Amenities - end -->
 
 
-
 	<div class="card">
-		<div class="card-header">
-    House Details
-  	</div>
+		<div class="card-block">
+			<h4 class="card-title">House Details</h4>
+		</div>
 		<div class="card-block">
 			<table class="table table-hover">
   <tbody>
@@ -133,7 +230,7 @@
 		<div class="card">
   <div class="card-block">
     <h4 class="card-title">Schedule a Visit</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Please fill in the below details and we'll get right back to you.</p>
   </div>
 			<div class="card-block">
 			<%= form_for(@house.tenant_visits.build) do |f| %>
