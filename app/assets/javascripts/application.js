@@ -16,6 +16,6 @@
 //= require tether.min
 //= require bootstrap
 //= require angular
-//= require app
+//= require angular-route
 //= require holder
 //= require_tree .

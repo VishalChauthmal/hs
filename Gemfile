@@ -34,6 +34,10 @@ gem 'bcrypt',       '3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Bower-rails to manage front-end dependcies
+gem 'bower-rails'
+gem 'angular-rails-templates'
+
 # Images
 gem 'carrierwave',  '0.10.0'
 gem 'mini_magick',  '3.8.0'
