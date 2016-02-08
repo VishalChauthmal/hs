@@ -22,13 +22,13 @@ Locality.find_by(name: "Powai").neighborhoods.create!(neighbor_locality: Localit
 
 
 House.create!(#type, owner,
-							title: "Raj Legacy", bhk: 2, no_of_beds: 4, allowed_gender: "any", locality_id: 1, 
+							title: "Raj Legacy", bhk: 2, max_no_of_beds: 4, locality_id: 1, rent:47000, security_deposit: 200000,
 							#pincode, lat, long, landmark,
 							address: "Raj Legacy Housing Cooperative Society, LBS Road, Vikhroli West - 400079")
-House.create!(title: "Raj Splendour", bhk: 2, no_of_beds: 4, allowed_gender: "any", 
-							locality_id: 1, address: "Raj splendour, LBS Road, Vikhroli West - 400079")
-House.create!(title: "Lodha Aurum", bhk: 2, no_of_beds: 4, allowed_gender: "any", 
-							locality_id: 2, address: "Lodha Aurum Grande, Kanjurmarg East - 400042")
+House.create!(title: "Raj Splendour", bhk: 2, max_no_of_beds: 4, locality_id: 1, rent: 49000, security_deposit: 130000, 
+							address: "Raj splendour, LBS Road, Vikhroli West - 400079")
+House.create!(title: "Lodha Aurum", bhk: 2, max_no_of_beds: 4, locality_id: 2, rent: 45000, security_deposit: 200000,
+							address: "Lodha Aurum Grande, Kanjurmarg East - 400042")
 
 
 TenantType.create!(name: "family")
@@ -47,19 +47,19 @@ House.find(3).house_tenant_type_relationships.create!(tenant_type_id: 1)
 
 
 2.times { Room.create!(house_id: 1, #tenant_id,
-											rent: 47000/2, security_deposit: 200000/2, room_occupancy: 1) }
-2.times { Room.create!(house_id: 2, rent: 49000/2, security_deposit: 130000/2, room_occupancy: 1) }
-2.times { Room.create!(house_id: 3, rent: 45000/2, security_deposit: 200000/2, room_occupancy: 1) }
+											rent: 47000/2, security_deposit: 200000/2, max_room_occupancy: 2) }
+2.times { Room.create!(house_id: 2, rent: 49000/2, security_deposit: 130000/2, max_room_occupancy: 2) }
+2.times { Room.create!(house_id: 3, rent: 45000/2, security_deposit: 200000/2, max_room_occupancy: 2) }
 
 
 2.times { Bed.create!(room_id: 1, #tenant_id,
-											rent: 47000/4, security_deposit: 200000/4, room_occupancy: 2) }
+											rent: 47000/4, security_deposit: 200000/4) }
 2.times { Bed.create!(room_id: 2, #tenant_id,
-											rent: 47000/4, security_deposit: 200000/4, room_occupancy: 2) }
-2.times { Bed.create!(room_id: 3, rent: 49000/4, security_deposit: 130000/4, room_occupancy: 2) }
-2.times { Bed.create!(room_id: 4, rent: 49000/4, security_deposit: 130000/4, room_occupancy: 2) }
-2.times { Bed.create!(room_id: 5, rent: 45000/4, security_deposit: 200000/4, room_occupancy: 2) }
-2.times { Bed.create!(room_id: 6, rent: 45000/4, security_deposit: 200000/4, room_occupancy: 2) }
+											rent: 47000/4, security_deposit: 200000/4) }
+2.times { Bed.create!(room_id: 3, rent: 49000/4, security_deposit: 130000/4) }
+2.times { Bed.create!(room_id: 4, rent: 49000/4, security_deposit: 130000/4) }
+2.times { Bed.create!(room_id: 5, rent: 45000/4, security_deposit: 200000/4) }
+2.times { Bed.create!(room_id: 6, rent: 45000/4, security_deposit: 200000/4) }
 
 
 Amenity.create!(name: "AC", category: "living room")	# AC in Living Room

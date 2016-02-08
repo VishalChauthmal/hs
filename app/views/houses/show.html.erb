@@ -283,22 +283,28 @@
 		</div>
 	<% end %>
 
-	<div class="row clearfix">
-		<% @rooms.each do |room| %>
-			<div class="col-xs-<%= 12/@rooms.count %> clearfix">
-				<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-						<div style="color:drakgray;">Room</div>
-						<div>rent: <strong><%= room.rent %></strong></div>
-						<div>security_deposit: <%= room.security_deposit %></div>
-						<div>max_room_occupancy: <%= room.max_room_occupancy %></div>
-				</div>
-			</div>
-		<% end %>
-	</div>
+	<% if params[:tenant_type_id] == '1' %>
+		<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+			<div style="color:drakgray;">House</div>
+			<div>rent: <strong><%= @house.rent %></strong></div>
+			<div>security_deposit: <%= @house.security_deposit %></div>
+		</div>
+	<% end %>
 
-	<% if false %>
-	<% @rooms.each do |room| %>
-		<% @beds = room.beds %>
+	<% if params[:tenant_type_id] == '2' || params[:tenant_type_id] == '3' %>
+		<div class="row clearfix">
+			<% @rooms.each do |room| %>
+				<div class="col-xs-<%= 12/@rooms.count %> clearfix">
+					<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+							<div style="color:drakgray;">Room</div>
+							<div>rent: <strong><%= room.rent %></strong></div>
+							<div>security_deposit: <%= room.security_deposit %></div>
+							<div>max_room_occupancy: <%= room.max_room_occupancy %></div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
 		<div class="row clearfix">
 			<% @beds.each do |bed| %>
 				<div class="col-xs-<%= 12/@beds.count %> clearfix">
@@ -306,26 +312,11 @@
 							<div style="color:drakgray;">Bed</div>
 							<div>rent: <strong><%= bed.rent %></strong></div>
 							<div>security_deposit: <%= bed.security_deposit %></div>
-							<div>room_occupancy: <%= bed.room_occupancy %></div>
 					</div>
 				</div>
 			<% end %>
 		</div>
 	<% end %>
-	<% end %>
-
-	<div class="row clearfix">
-		<% @beds.each do |bed| %>
-			<div class="col-xs-<%= 12/@beds.count %> clearfix">
-				<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-						<div style="color:drakgray;">Bed</div>
-						<div>rent: <strong><%= bed.rent %></strong></div>
-						<div>security_deposit: <%= bed.security_deposit %></div>
-						<div>room_occupancy: <%= bed.room_occupancy %></div>
-				</div>
-			</div>
-		<% end %>
-	</div>
 
 </div>
 

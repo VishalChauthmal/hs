@@ -16,8 +16,7 @@ class House < ActiveRecord::Base
 
 	validates :title, presence: true
 	validates :bhk, presence: true
-	validates :no_of_beds, presence: true
-	validates :allowed_gender, presence: true
+	validates :max_no_of_beds, presence: true
 	validates :locality_id, presence: true
 	validates :address, presence: true
 
