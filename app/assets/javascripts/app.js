@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('homestayz', []);
+	var app = angular.module('homestayz', ['ngRoute']);
  	app.controller('HouseController', function(){
   	this.products = houses;
  	});
