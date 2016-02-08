@@ -14,8 +14,7 @@
 						<div>House Title: <%= link_to house.title, house_path(house, tenant_type_id: params[:search][:tenant_type_id]), :target => "_blank" %></div>
 						<div>Address: <%= house.address %></div>
 						<div>BHK: <%= house.bhk %></div>
-						<div>No. of Beds: <%= house.no_of_beds %></div>
-						<div>Allowed Gender: <%= house.allowed_gender %></div>
+						<div>Maximum No. of Beds: <%= house.max_no_of_beds %></div>
 						<div>Locality: <%= house.locality.name %></div>
 						<div>City: <%= house.locality.city.name %></div>
 

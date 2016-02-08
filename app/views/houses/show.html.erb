@@ -206,12 +206,8 @@
       <td><%= @house.bhk %></td>
     </tr>
 		<tr>
-      <th scope="row">No. of Beds</th>
-      <td><%= @house.no_of_beds %></td>
-    </tr>
-		<tr>
-      <th scope="row">Allowed Gender</th>
-      <td><%= @house.allowed_gender %></td>
+      <th scope="row">Maximum No. of Beds</th>
+      <td><%= @house.max_no_of_beds %></td>
     </tr>
 		<tr>
       <th scope="row">Locality</th>
@@ -294,7 +290,7 @@
 						<div style="color:drakgray;">Room</div>
 						<div>rent: <strong><%= room.rent %></strong></div>
 						<div>security_deposit: <%= room.security_deposit %></div>
-						<div>room_occupancy: <%= room.room_occupancy %></div>
+						<div>max_room_occupancy: <%= room.max_room_occupancy %></div>
 				</div>
 			</div>
 		<% end %>
