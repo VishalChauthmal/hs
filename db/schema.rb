@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207085918) do
+ActiveRecord::Schema.define(version: 20160208064551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 20160207085918) do
 
   add_index "house_photos", ["house_id"], name: "index_house_photos_on_house_id", using: :btree
 
+  create_table "house_tenant_type_relationships", force: :cascade do |t|
+    t.integer  "house_id"
+    t.integer  "tenant_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "house_tenant_type_relationships", ["house_id"], name: "index_house_tenant_type_relationships_on_house_id", using: :btree
+  add_index "house_tenant_type_relationships", ["tenant_type_id"], name: "index_house_tenant_type_relationships_on_tenant_type_id", using: :btree
+
   create_table "houses", force: :cascade do |t|
     t.string   "category"
     t.integer  "owner_id"
@@ -135,6 +145,14 @@ ActiveRecord::Schema.define(version: 20160207085918) do
 
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
 
+  create_table "tenant_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tenant_types", ["name"], name: "index_tenant_types_on_name", using: :btree
+
   create_table "tenant_visits", force: :cascade do |t|
     t.integer  "house_id"
     t.string   "name"
@@ -179,6 +197,8 @@ ActiveRecord::Schema.define(version: 20160207085918) do
   add_foreign_key "house_amenity_relationships", "amenities"
   add_foreign_key "house_amenity_relationships", "houses"
   add_foreign_key "house_photos", "houses"
+  add_foreign_key "house_tenant_type_relationships", "houses"
+  add_foreign_key "house_tenant_type_relationships", "tenant_types"
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
   add_foreign_key "localities", "cities"
