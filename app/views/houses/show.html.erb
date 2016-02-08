@@ -220,15 +220,33 @@
 		<% end %>
 	</div>
 
-	<% @beds = @house.beds %>
-	<% @beds.each do |bed| %>
+	<% @rooms = @house.rooms %>
+	<% @rooms.each do |room| %>
+		<div class="col-xs-<%= 12/@rooms.count %>">
 			<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-					<div style="color:drakgray;">Bed</div>
-					<div>rent: <strong><%= bed.rent %></strong></div>
-					<div>security_deposit: <%= bed.security_deposit %></div>
-					<div>room_occupancy: <%= bed.room_occupancy %></div>
+					<div style="color:drakgray;">Room</div>
+					<div>rent: <strong><%= room.rent %></strong></div>
+					<div>security_deposit: <%= room.security_deposit %></div>
+					<div>room_occupancy: <%= room.room_occupancy %></div>
 			</div>
+		</div>
 	<% end %>
+
+	<% @rooms.each do |room| %>
+		<% @beds = room.beds %>
+		<% @beds.each do |bed| %>
+			<div class="col-xs-<%= 12/@beds.count %>">
+				<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+						<div style="color:drakgray;">Bed</div>
+						<div>rent: <strong><%= bed.rent %></strong></div>
+						<div>security_deposit: <%= bed.security_deposit %></div>
+						<div>room_occupancy: <%= bed.room_occupancy %></div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+	
+
 </div>
 
 <div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">

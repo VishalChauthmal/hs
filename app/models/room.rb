@@ -1,5 +1,5 @@
 class Room < ActiveRecord::Base
-	belongs_to :house
+	belongs_to :house, inverse_of: :rooms
 	belongs_to :tenant
 	has_many :beds
 
