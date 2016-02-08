@@ -15,6 +15,12 @@ Locality.create!(name: "Powai", city_id: 1)
 Locality.create!(name: "Chandivali", city_id: 1)
 
 
+Locality.find_by(name: "Vikhroli").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Kanjur Marg"), distance: 4)
+Locality.find_by(name: "Kanjur Marg").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Powai"), distance: 5)
+Locality.find_by(name: "Powai").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Chandivali"), distance: 2.5)
+# Locality.find_by(name: "Dadar").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Bandra"), distance: 5)
+
+
 House.create!(#type, owner,
 							title: "Raj Legacy", bhk: 2, no_of_beds: 4, allowed_gender: "any", locality_id: 1, 
 							#pincode, lat, long, landmark,
@@ -159,7 +165,3 @@ House.find(3).house_amenity_relationships.create!(amenity_id: 28)
 
 
 
-# Locality.find_by(name: "Powai").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Andheri"), distance: 5.8)
-# Locality.find_by(name: "Nariman Point").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Marine Lines"), distance: 2.8)
-# Locality.find_by(name: "Dadar").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Prabhadevi"), distance: 2.3)
-# Locality.find_by(name: "Dadar").neighborhoods.create!(neighbor_locality: Locality.find_by(name: "Bandra"), distance: 5)

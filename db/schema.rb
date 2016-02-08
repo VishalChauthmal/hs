@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208114127) do
+ActiveRecord::Schema.define(version: 20160208205023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20160208114127) do
     t.string   "category"
     t.integer  "owner_id"
     t.integer  "bhk"
-    t.integer  "no_of_beds"
+    t.integer  "max_no_of_beds"
     t.string   "allowed_gender"
     t.integer  "locality_id"
     t.string   "pincode"
@@ -100,9 +100,12 @@ ActiveRecord::Schema.define(version: 20160208114127) do
     t.float    "long"
     t.text     "address"
     t.string   "landmark"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "title"
+    t.integer  "rent"
+    t.integer  "security_deposit"
+    t.string   "homestayzid"
   end
 
   add_index "houses", ["allowed_gender"], name: "index_houses_on_allowed_gender", using: :btree

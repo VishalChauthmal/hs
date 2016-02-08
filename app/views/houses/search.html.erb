@@ -7,7 +7,9 @@
 
 			<%= f.collection_select :locality_id, Locality.all, :id, :name, prompt: 'Select Locality' %>
 
-			<%= f.select :gender, options_for_select([['Male', 'male'], ['Female', 'female']]), include_blank: 'Gender' %>
+			<%#= f.select :gender, options_for_select([['Male', 'male'], ['Female', 'female']]), include_blank: 'Gender' %>
+
+			<%= f.select :tenant_type_id, options_for_select([['Family', '1'], ['Boys', '2'], ['Girls', '3']]), include_blank: 'Tenant Type' %>
 
 			<%= f.submit "Search Homes", class: "btn btn-block btn-primary" %>
 		<% end %>
