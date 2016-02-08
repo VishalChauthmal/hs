@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208064551) do
+ActiveRecord::Schema.define(version: 20160208083300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,22 @@ ActiveRecord::Schema.define(version: 20160208064551) do
 
   add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
 
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "house_id"
+    t.integer  "tenant_id"
+    t.integer  "rent"
+    t.integer  "security_deposit"
+    t.integer  "room_occupancy"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "rooms", ["house_id"], name: "index_rooms_on_house_id", using: :btree
+  add_index "rooms", ["rent", "room_occupancy"], name: "index_rooms_on_rent_and_room_occupancy", using: :btree
+  add_index "rooms", ["rent"], name: "index_rooms_on_rent", using: :btree
+  add_index "rooms", ["room_occupancy"], name: "index_rooms_on_room_occupancy", using: :btree
+  add_index "rooms", ["tenant_id"], name: "index_rooms_on_tenant_id", using: :btree
+
   create_table "tenant_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -203,5 +219,7 @@ ActiveRecord::Schema.define(version: 20160208064551) do
   add_foreign_key "houses", "owners"
   add_foreign_key "localities", "cities"
   add_foreign_key "neighborhoods", "localities"
+  add_foreign_key "rooms", "houses"
+  add_foreign_key "rooms", "tenants"
   add_foreign_key "tenant_visits", "houses"
 end
