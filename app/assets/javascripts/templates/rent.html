@@ -1,0 +1,91 @@
+<div class="card-block">
+  		<h4 class="card-title">Rent Details</h4>
+		</div>										
+		<div class="card-block">
+    	<ul class="nav nav-pills">
+  			<li class="nav-item">
+    			<a href class="nav-link" ng-class="{ active:panel.isSelected(1)}" ng-click="panel.selectTab(1)">Beds</a>
+  			</li>
+				<li class="nav-item">
+    			<a href class="nav-link" ng-class="{ active:panel.isSelected(2)}" ng-click="panel.selectTab(2)">Rooms</a>
+  			</li>
+			</ul>
+		</div>
+		<div class="card-block">
+    	<div class="panel" ng-show="panel.isSelected(1) ">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Room</th>
+      				<th>Bed</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+    				<tr>
+      				<td rowspan="2">Room 1</td>
+      				<td>Bed 1</td>
+      				<td>INR 40,000</td>
+      				<th scope="row">INR 13,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 40,000</td>
+      				<th scope="row">INR 13,000</th>
+    				</tr>
+    				<tr>
+      				<td rowspan="2">Room 2</td>
+      				<td>Bed 1</td>
+      				<td>INR 42,000</td>
+      				<th scope="row">INR 14,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 42,000</td>
+      				<th scope="row">INR 14,000</th>
+    				</tr>
+						<tr>
+      				<td rowspan="2">Room 3</td>
+      				<td>Bed 1</td>
+      				<td>INR 48,000</td>
+      				<th scope="row">INR 16,000</th>
+    				</tr>
+    				<tr>
+      				<td>Bed 2</td>
+      				<td>INR 48,000</td>
+      				<th scope="row">INR 16,000</th>
+    				</tr>
+  				</tbody>
+				</table>
+
+			</div>
+			<div class="panel" ng-show="panel.isSelected(2)">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Room</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+    				<tr class="table-success">
+							<td>Room 1</td>
+      				<td>INR 80,000</td>
+      				<th scope="row">INR 26,000</th>
+    				</tr>
+						<tr class="table-success">
+							<td>Room 2</td>
+      				<td>INR 84,000</td>
+      				<th scope="row">INR 28,000</th>
+    				</tr>
+						<tr class="table-danger">
+							<td>Room 3</td>
+      				<td>INR 96,000</td>
+      				<th scope="row">INR 32,000</th>
+    				</tr>
+  				</tbody>
+				</table>
+			</div>
+		</div>

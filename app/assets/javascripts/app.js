@@ -1,8 +1,22 @@
 (function(){
-	var app = angular.module('homestayz', ['ngRoute']);
- 	app.controller('HouseController', function(){
-  	this.products = houses;
- 	});
+	var app = angular.module('homestayz', ['ngRoute', 'templates']);
+	
+	app.config(function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode({endabled: true, requireBase:false});
+  $routeProvider
+    .when("/houses/:id",
+      { templateUrl: "rent.html",
+        controller: "RentController" });
+	$routeProvider
+		.otherwise({
+  		redirectTo: function(current, path, search) {
+    		if(search.goto) {
+      		return '/' + search.goto;
+    		}
+      	return '/'
+  		}
+	});
+});
 	app.controller('RentController', function(){
 		this.tab = 1;
 		this.selectTab = function(setTab) {
@@ -12,32 +26,5 @@
 			return this.tab === checkTab;
 		};
 	});
-    
-    var houses = [
-        {
-            name: "Sushant's house" 
-        },
-        {
-            name: "Gourav' house"
-        },
-        {
-            name: "Sudhanshu's house"
-        },
-        {
-            name: "Altaf's house"
-        },
-        {
-            name: "Vishal's house"
-        },
-        {
-            name: "Amit's house"
-        },
-        {
-            name: "Vidushi's house"
-        },
-        {
-            name: "Sasha's house"
-        }
-    ];
         
 })();

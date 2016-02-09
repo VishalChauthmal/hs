@@ -1,9 +1,19 @@
 class HousesController < ApplicationController
+	
 	def search
 	end
 
 	def results
 		@houses = House.search_results(params[:search])
+	end
+	
+	# Angular JSON - Below for sending JSONs to Angular
+	def details
+		# Gather all post data
+		house = House.find(params[:id])
+
+    # Respond to request with post data in json format
+		render json: house
 	end
 
 	# def new

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/search'
 	get 'home/single_view'
+	
+	get 'housedetails/:id' => 'houses#details'
 
 
 	get 'signup'    =>  'users#new'
@@ -31,6 +33,8 @@ Rails.application.routes.draw do
 	resources :users
 
 
+	#For Angular routing
+	get '/\*path' => redirect('/?goto=%{path}')
 
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
