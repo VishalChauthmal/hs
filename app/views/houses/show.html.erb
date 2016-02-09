@@ -206,12 +206,8 @@
       <td><%= @house.bhk %></td>
     </tr>
 		<tr>
-      <th scope="row">No. of Beds</th>
-      <td><%= @house.no_of_beds %></td>
-    </tr>
-		<tr>
-      <th scope="row">Allowed Gender</th>
-      <td><%= @house.allowed_gender %></td>
+      <th scope="row">Maximum No. of Beds</th>
+      <td><%= @house.max_no_of_beds %></td>
     </tr>
 		<tr>
       <th scope="row">Locality</th>
@@ -257,67 +253,87 @@
 	</div>
 
 
+
+
+
+
+
+
+<h3 style="border-top:5px solid black; text-align:center; padding-top:20px; margin-top:20px;">Imported from Back-end</h3>
+
 <div style="border-bottom:1px solid gray; padding:7.5px 25px;">
-	<div style="color:blue;">House</div>
-	<div>House ID: <%= @house.id %></div>
-	<div>House Title: <%= @house.title %></div>
-	<div>Address: <%= @house.address %></div>
-	<div>BHK: <%= @house.bhk %></div>
-	<div>No. of Beds: <%= @house.no_of_beds %></div>
-	<div>Allowed Gender: <%= @house.allowed_gender %></div>
-	<div>Locality: <%= @house.locality.name %></div>
-	<div>City: <%= @house.locality.city.name %></div>
+	<% if false %>
+		<div style="color:blue;">House</div>
+		<div>House ID: <%= @house.id %></div>
+		<div>House Title: <%= @house.title %></div>
+		<div>Address: <%= @house.address %></div>
+		<div>BHK: <%= @house.bhk %></div>
+		<div>No. of Beds: <%= @house.no_of_beds %></div>
+		<div>Allowed Gender: <%= @house.allowed_gender %></div>
+		<div>Locality: <%= @house.locality.name %></div>
+		<div>City: <%= @house.locality.city.name %></div>
+	<% end %>
 
-	<div style="margin: 5px 25px;">
-		<div style="color:cadetblue;">Amenities</div>
-		<% @house.amenities.each do |amenity| %>
-			<div><%= amenity.name %></div>
-		<% end %>
-	</div>
-
-	<% @rooms = @house.rooms %>
-	<% @rooms.each do |room| %>
-		<div class="col-xs-<%= 12/@rooms.count %>">
-			<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-					<div style="color:drakgray;">Room</div>
-					<div>rent: <strong><%= room.rent %></strong></div>
-					<div>security_deposit: <%= room.security_deposit %></div>
-					<div>room_occupancy: <%= room.room_occupancy %></div>
-			</div>
+	<% if false %>
+		<div style="margin: 5px 25px;">
+			<div style="color:cadetblue;">Amenities</div>
+			<% @house.amenities.each do |amenity| %>
+				<div><%= amenity.name %></div>
+			<% end %>
 		</div>
 	<% end %>
 
-	<% @rooms.each do |room| %>
-		<% @beds = room.beds %>
-		<% @beds.each do |bed| %>
-			<div class="col-xs-<%= 12/@beds.count %>">
-				<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-						<div style="color:drakgray;">Bed</div>
-						<div>rent: <strong><%= bed.rent %></strong></div>
-						<div>security_deposit: <%= bed.security_deposit %></div>
-						<div>room_occupancy: <%= bed.room_occupancy %></div>
+	<!-- Show full-house unit to everyone -->
+	<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+		<div style="color:drakgray;">House</div>
+		<div>rent: <strong><%= @house.rent %></strong></div>
+		<div>security_deposit: <%= @house.security_deposit %></div>
+	</div>
+
+	<!-- Show room units and bed units only to bachelor_male & bachelor_female -->
+	<% if params[:tenant_type_id] == '2' || params[:tenant_type_id] == '3' %>
+		<div class="row clearfix">
+			<% @rooms.each do |room| %>
+				<div class="col-xs-<%= 12/@rooms.count %> clearfix">
+					<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+							<div style="color:drakgray;">Room</div>
+							<div>rent: <strong><%= room.rent %></strong></div>
+							<div>security_deposit: <%= room.security_deposit %></div>
+							<div>max_room_occupancy: <%= room.max_room_occupancy %></div>
+					</div>
 				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
+
+		<div class="row clearfix">
+			<% @beds.each do |bed| %>
+				<div class="col-xs-<%= 12/@beds.count %> clearfix">
+					<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+							<div style="color:drakgray;">Bed</div>
+							<div>rent: <strong><%= bed.rent %></strong></div>
+							<div>security_deposit: <%= bed.security_deposit %></div>
+					</div>
+				</div>
+			<% end %>
+		</div>
 	<% end %>
-	
 
 </div>
 
-<div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">
-	<div class="col-xs-6">
-		<h3>Photos</h3>
-		<% @photos = @house.photos %>
-		<% @photos.each do |photo| %>
-			<div style="margin-top:35px;">
-				<div>Photo ID: <%= photo.id %> | House ID: <%= photo.house_id %> | Caption: <%= photo.caption %></div>
-				<%= image_tag photo.image.url if photo.image? %>
-				<hr style="max-width:400px;">
-			</div>
-		<% end %>
-	</div>
+<% if false %>
+	<div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">
+		<div class="col-xs-6">
+			<h3>Photos</h3>
+			<% @photos = @house.photos %>
+			<% @photos.each do |photo| %>
+				<div style="margin-top:35px;">
+					<div>Photo ID: <%= photo.id %> | House ID: <%= photo.house_id %> | Caption: <%= photo.caption %></div>
+					<%= image_tag photo.image.url if photo.image? %>
+					<hr style="max-width:400px;">
+				</div>
+			<% end %>
+		</div>
 
-	<% if false %>
 		<div class="col-xs-6">
 			<h3>Add new photo of this house</h3>
 			<div class="clearfix" style="margin:35px 50px">
@@ -336,8 +352,8 @@
 					<% end %>
 			</div>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>
 
 
 
@@ -349,31 +365,3 @@
 </style>
 
 
-
-
-<!-- Form for scheduling a visit - start -->
-<div style="text-align:center; padding-top:25px;" class="clearfix">
-	<h3>Shedule visit for this house</h3>
-	<div class="row clearfix" style="margin:50px">
-		<div class="col-xs-4 col-xs-offset-4">
-			<%= form_for(@house.tenant_visits.build) do |f| %>
-
-				<%= render 'shared/error_messages', object: f.object %>
-
-				<%= hidden_field_tag :house_id, @house.id %>
-
-				<%= f.label :name %>
-				<%= f.text_field :name, required: true, class: 'form-control' %>
-
-				<%= f.label :phone %>
-				<%= f.text_field :phone, required: true, class: 'form-control' %>
-
-				<%= f.label :email %>
-				<%= f.email_field :email, class: 'form-control' %>
-
-				<%= f.submit "Schedule Visit", class: "btn btn-block btn-primary" %>
-			<% end %>
-		</div>
-	</div>
-</div>
-<!-- Form for scheduling a visit - end -->

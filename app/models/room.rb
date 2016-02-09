@@ -6,5 +6,5 @@ class Room < ActiveRecord::Base
 	validates :house, presence: true
 	validates :rent, presence: true
 	validates :security_deposit, presence: true
-	validates :room_occupancy, presence: true
+	validates :max_room_occupancy, presence: true
 end

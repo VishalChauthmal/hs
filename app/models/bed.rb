@@ -5,5 +5,4 @@ class Bed < ActiveRecord::Base
 	validates :room, presence: true
 	validates :rent, presence: true
 	validates :security_deposit, presence: true
-	validates :room_occupancy, presence: true
 end

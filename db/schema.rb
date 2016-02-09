@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208114127) do
+ActiveRecord::Schema.define(version: 20160209064837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,16 +29,13 @@ ActiveRecord::Schema.define(version: 20160208114127) do
     t.integer  "tenant_id"
     t.integer  "rent"
     t.integer  "security_deposit"
-    t.integer  "room_occupancy"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "room_id"
   end
 
-  add_index "beds", ["rent", "room_occupancy"], name: "index_beds_on_rent_and_room_occupancy", using: :btree
   add_index "beds", ["rent"], name: "index_beds_on_rent", using: :btree
   add_index "beds", ["room_id"], name: "index_beds_on_room_id", using: :btree
-  add_index "beds", ["room_occupancy"], name: "index_beds_on_room_occupancy", using: :btree
   add_index "beds", ["tenant_id"], name: "index_beds_on_tenant_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
@@ -92,23 +89,28 @@ ActiveRecord::Schema.define(version: 20160208114127) do
     t.string   "category"
     t.integer  "owner_id"
     t.integer  "bhk"
-    t.integer  "no_of_beds"
-    t.string   "allowed_gender"
+    t.integer  "max_no_of_beds"
     t.integer  "locality_id"
     t.string   "pincode"
     t.float    "lat"
     t.float    "long"
     t.text     "address"
     t.string   "landmark"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "title"
+    t.integer  "rent"
+    t.integer  "security_deposit"
+    t.string   "homestayzid"
+    t.integer  "tenant_id"
   end
 
-  add_index "houses", ["allowed_gender"], name: "index_houses_on_allowed_gender", using: :btree
-  add_index "houses", ["locality_id", "allowed_gender"], name: "index_houses_on_locality_id_and_allowed_gender", using: :btree
+  add_index "houses", ["homestayzid"], name: "index_houses_on_homestayzid", using: :btree
   add_index "houses", ["locality_id"], name: "index_houses_on_locality_id", using: :btree
   add_index "houses", ["owner_id"], name: "index_houses_on_owner_id", using: :btree
+  add_index "houses", ["rent"], name: "index_houses_on_rent", using: :btree
+  add_index "houses", ["security_deposit"], name: "index_houses_on_security_deposit", using: :btree
+  add_index "houses", ["tenant_id"], name: "index_houses_on_tenant_id", using: :btree
 
   create_table "localities", force: :cascade do |t|
     t.string   "name"
@@ -150,15 +152,15 @@ ActiveRecord::Schema.define(version: 20160208114127) do
     t.integer  "tenant_id"
     t.integer  "rent"
     t.integer  "security_deposit"
-    t.integer  "room_occupancy"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "max_room_occupancy"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "rooms", ["house_id"], name: "index_rooms_on_house_id", using: :btree
-  add_index "rooms", ["rent", "room_occupancy"], name: "index_rooms_on_rent_and_room_occupancy", using: :btree
+  add_index "rooms", ["max_room_occupancy"], name: "index_rooms_on_max_room_occupancy", using: :btree
+  add_index "rooms", ["rent", "max_room_occupancy"], name: "index_rooms_on_rent_and_max_room_occupancy", using: :btree
   add_index "rooms", ["rent"], name: "index_rooms_on_rent", using: :btree
-  add_index "rooms", ["room_occupancy"], name: "index_rooms_on_room_occupancy", using: :btree
   add_index "rooms", ["tenant_id"], name: "index_rooms_on_tenant_id", using: :btree
 
   create_table "tenant_types", force: :cascade do |t|
@@ -217,6 +219,7 @@ ActiveRecord::Schema.define(version: 20160208114127) do
   add_foreign_key "house_tenant_type_relationships", "tenant_types"
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
+  add_foreign_key "houses", "tenants"
   add_foreign_key "localities", "cities"
   add_foreign_key "neighborhoods", "localities"
   add_foreign_key "rooms", "houses"
