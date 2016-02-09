@@ -283,14 +283,14 @@
 		</div>
 	<% end %>
 
-	<% if params[:tenant_type_id] == '1' %>
-		<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-			<div style="color:drakgray;">House</div>
-			<div>rent: <strong><%= @house.rent %></strong></div>
-			<div>security_deposit: <%= @house.security_deposit %></div>
-		</div>
-	<% end %>
+	<!-- Show full-house unit to everyone -->
+	<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
+		<div style="color:drakgray;">House</div>
+		<div>rent: <strong><%= @house.rent %></strong></div>
+		<div>security_deposit: <%= @house.security_deposit %></div>
+	</div>
 
+	<!-- Show room units and bed units only to bachelor_male & bachelor_female -->
 	<% if params[:tenant_type_id] == '2' || params[:tenant_type_id] == '3' %>
 		<div class="row clearfix">
 			<% @rooms.each do |room| %>

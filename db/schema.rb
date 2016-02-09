@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208213813) do
+ActiveRecord::Schema.define(version: 20160209064837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160208213813) do
     t.integer  "rent"
     t.integer  "security_deposit"
     t.string   "homestayzid"
+    t.integer  "tenant_id"
   end
 
   add_index "houses", ["homestayzid"], name: "index_houses_on_homestayzid", using: :btree
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160208213813) do
   add_index "houses", ["owner_id"], name: "index_houses_on_owner_id", using: :btree
   add_index "houses", ["rent"], name: "index_houses_on_rent", using: :btree
   add_index "houses", ["security_deposit"], name: "index_houses_on_security_deposit", using: :btree
+  add_index "houses", ["tenant_id"], name: "index_houses_on_tenant_id", using: :btree
 
   create_table "localities", force: :cascade do |t|
     t.string   "name"
@@ -217,6 +219,7 @@ ActiveRecord::Schema.define(version: 20160208213813) do
   add_foreign_key "house_tenant_type_relationships", "tenant_types"
   add_foreign_key "houses", "localities"
   add_foreign_key "houses", "owners"
+  add_foreign_key "houses", "tenants"
   add_foreign_key "localities", "cities"
   add_foreign_key "neighborhoods", "localities"
   add_foreign_key "rooms", "houses"
