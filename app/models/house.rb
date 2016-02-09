@@ -19,6 +19,8 @@ class House < ActiveRecord::Base
 	validates :max_no_of_beds, presence: true
 	validates :locality_id, presence: true
 	validates :address, presence: true
+	validates :rent, presence: true
+	validates :security_deposit, presence: true
 
 	def self.search_results(search_params)
 		if false
