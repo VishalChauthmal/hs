@@ -1,4 +1,5 @@
 class HousesController < ApplicationController
+	
 	def search
 		@all_cities = City.all
 		@all_localities = Locality.all
@@ -6,6 +7,15 @@ class HousesController < ApplicationController
 
 	def results
 		@houses = House.search_results(params[:search])
+	end
+	
+	# Angular JSON - Below for sending JSONs to Angular
+	def details
+		# Gather all House data
+		house = House.find(params[:id])
+
+    # Respond to request with post data in json format
+		render json: house, :include => [ :rooms => { :include => [ :beds ] } ]
 	end
 
 	# def new

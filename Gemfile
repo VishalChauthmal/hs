@@ -37,6 +37,9 @@ gem 'bcrypt',       '3.1.7'
 # Use Bower-rails to manage front-end dependcies
 gem 'bower-rails'
 
+# Use angular-rails-templates to precompile templates
+gem 'angular-rails-templates', '~> 1.0.0.beta2'
+
 # Images
 gem 'carrierwave',  '0.10.0'
 gem 'mini_magick',  '3.8.0'
