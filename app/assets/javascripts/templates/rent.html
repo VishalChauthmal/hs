@@ -3,12 +3,16 @@
 		</div>										
 		<div class="card-block">
     	<ul class="nav nav-pills">
-  			<li class="nav-item">
+				<div class="col-xs-6">
+  			<li class="nav-item" style="width: 100%">
     			<a href class="nav-link" ng-class="{ active:isSelected(1)}" ng-click="selectTab(1)">Beds</a>
   			</li>
-				<li class="nav-item">
+				</div>
+				<div class="col-xs-6">
+				<li class="nav-item" style="width: 100%">
     			<a href class="nav-link" ng-class="{ active:isSelected(2)}" ng-click="selectTab(2)">Rooms</a>
   			</li>
+				</div>
 			</ul>
 		</div>
 		<!-- Angular code snippet -->
@@ -27,7 +31,7 @@
       				<th scope="row" colspan="3">Room {{$index + 1}}</td>
 						</tr>
 						<tr ng-repeat="bed in room.beds">
-      				<td>Bed {{$index + 1}}</td>
+      				<td class="table-success">Bed {{$index + 1}}</td>
       				<td>INR {{bed.security_deposit}}</td>
       				<th scope="row">INR {{bed.rent}}</th>
     				</tr>
@@ -44,8 +48,8 @@
     				</tr>
   				</thead>
   				<tbody ng-repeat="room in house.rooms">
-    				<tr class="table-success">
-							<td>Room 1</td>
+    				<tr>
+							<td class="table-success">Room {{$index +1}}</td>
       				<td>INR {{room.security_deposit}}</td>
       				<th scope="row">INR {{room.rent}}</th>
     				</tr>
