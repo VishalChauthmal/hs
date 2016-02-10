@@ -4,63 +4,37 @@
 		<div class="card-block">
     	<ul class="nav nav-pills">
   			<li class="nav-item">
-    			<a href class="nav-link" ng-class="{ active:panel.isSelected(1)}" ng-click="panel.selectTab(1)">Beds</a>
+    			<a href class="nav-link" ng-class="{ active:isSelected(1)}" ng-click="selectTab(1)">Beds</a>
   			</li>
 				<li class="nav-item">
-    			<a href class="nav-link" ng-class="{ active:panel.isSelected(2)}" ng-click="panel.selectTab(2)">Rooms</a>
+    			<a href class="nav-link" ng-class="{ active:isSelected(2)}" ng-click="selectTab(2)">Rooms</a>
   			</li>
 			</ul>
 		</div>
+		<!-- Angular code snippet -->
 		<div class="card-block">
-    	<div class="panel" ng-show="panel.isSelected(1) ">
+    	<div class="panel" ng-show="isSelected(1) ">
 				<table class="table">
   				<thead class="thead-inverse">
     				<tr>
-      				<th>Room</th>
       				<th>Bed</th>
       				<th>Security Deposit</th>
       				<th>Rent</th>
     				</tr>
   				</thead>
-  				<tbody>
-    				<tr>
-      				<td rowspan="2">Room 1</td>
-      				<td>Bed 1</td>
-      				<td>INR 40,000</td>
-      				<th scope="row">INR 13,000</th>
-    				</tr>
-    				<tr>
-      				<td>Bed 2</td>
-      				<td>INR 40,000</td>
-      				<th scope="row">INR 13,000</th>
-    				</tr>
-    				<tr>
-      				<td rowspan="2">Room 2</td>
-      				<td>Bed 1</td>
-      				<td>INR 42,000</td>
-      				<th scope="row">INR 14,000</th>
-    				</tr>
-    				<tr>
-      				<td>Bed 2</td>
-      				<td>INR 42,000</td>
-      				<th scope="row">INR 14,000</th>
-    				</tr>
-						<tr>
-      				<td rowspan="2">Room 3</td>
-      				<td>Bed 1</td>
-      				<td>INR 48,000</td>
-      				<th scope="row">INR 16,000</th>
-    				</tr>
-    				<tr>
-      				<td>Bed 2</td>
-      				<td>INR 48,000</td>
-      				<th scope="row">INR 16,000</th>
+  				<tbody ng-repeat="room in house.rooms">
+    				<tr class="table-active">
+      				<th scope="row" colspan="3">Room {{$index + 1}}</td>
+						</tr>
+						<tr ng-repeat="bed in room.beds">
+      				<td>Bed {{$index + 1}}</td>
+      				<td>INR {{bed.security_deposit}}</td>
+      				<th scope="row">INR {{bed.rent}}</th>
     				</tr>
   				</tbody>
 				</table>
-
 			</div>
-			<div class="panel" ng-show="panel.isSelected(2)">
+			<div class="panel" ng-show="isSelected(2)">
 				<table class="table">
   				<thead class="thead-inverse">
     				<tr>
@@ -69,21 +43,11 @@
       				<th>Rent</th>
     				</tr>
   				</thead>
-  				<tbody>
+  				<tbody ng-repeat="room in house.rooms">
     				<tr class="table-success">
 							<td>Room 1</td>
-      				<td>INR 80,000</td>
-      				<th scope="row">INR 26,000</th>
-    				</tr>
-						<tr class="table-success">
-							<td>Room 2</td>
-      				<td>INR 84,000</td>
-      				<th scope="row">INR 28,000</th>
-    				</tr>
-						<tr class="table-danger">
-							<td>Room 3</td>
-      				<td>INR 96,000</td>
-      				<th scope="row">INR 32,000</th>
+      				<td>INR {{room.security_deposit}}</td>
+      				<th scope="row">INR {{room.rent}}</th>
     				</tr>
   				</tbody>
 				</table>

@@ -9,11 +9,11 @@ class HousesController < ApplicationController
 	
 	# Angular JSON - Below for sending JSONs to Angular
 	def details
-		# Gather all post data
+		# Gather all House data
 		house = House.find(params[:id])
 
     # Respond to request with post data in json format
-		render json: house
+		render json: house, :include => [ :rooms => { :include => [ :beds ] } ]
 	end
 
 	# def new

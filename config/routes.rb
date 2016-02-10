@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get 'home/search'
 	get 'home/single_view'
 	
+	# For API calls for Angular
 	get 'housedetails/:id' => 'houses#details'
-
 
 	get 'signup'    =>  'users#new'
 	get 'login'     =>  'sessions#new'
