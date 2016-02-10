@@ -283,15 +283,18 @@
 		</div>
 	<% end %>
 
-	<!-- Show full-house unit to everyone -->
+	<%# Show full-house unit to everyone %>
 	<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
 		<div style="color:drakgray;">House</div>
 		<div>rent: <strong><%= @house.rent %></strong></div>
 		<div>security_deposit: <%= @house.security_deposit %></div>
 	</div>
 
-	<!-- Show room units and bed units only to bachelor_male & bachelor_female -->
-	<% if params[:tenant_type_id] == '2' || params[:tenant_type_id] == '3' %>
+	<%# Show room units and bed units only to bachelor_male & bachelor_female %>
+	<%# params value comes from search results page to control what kind of tenant sees house/rooms/beds price %>
+	<%# if params[:ttirzdhqpxdahayibtbop] == '2' || params[:ttirzdhqpxdahayibtbop] == '3' %>
+	<%# 1 -> 2926298481259, 2 -> 10775342071178, 3 -> 18624385661097, 4 -> 6973888903935 %>
+	<% if params[:ttirzdhqpxdahayibtbop] == '10775342071178' || params[:ttirzdhqpxdahayibtbop] == '18624385661097' %>
 		<div class="row clearfix">
 			<% @rooms.each do |room| %>
 				<div class="col-xs-<%= 12/@rooms.count %> clearfix">

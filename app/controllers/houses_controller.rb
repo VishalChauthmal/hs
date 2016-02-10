@@ -1,5 +1,7 @@
 class HousesController < ApplicationController
 	def search
+		@all_cities = City.all
+		@all_localities = Locality.all
 	end
 
 	def results
@@ -25,7 +27,7 @@ class HousesController < ApplicationController
 
 	def show
 		@house = House.find(params[:id])
-		
+
 		all_house_amenities = @house.amenities
 		@living_room_amenities = all_house_amenities.where("category = ?", "living room")
 		@kitchen_amenities = all_house_amenities.where("category = ?", "kitchen")
