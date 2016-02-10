@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="homestayz">
+<html>
 <head>
   <title>Homestayz</title>
 	<meta charset="utf-8">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
-<body>
+<body ng-app="homestayz">
     <% if current_page?(root_path) %>
         <%= render 'layouts/home_header' %>
     <% else %>
