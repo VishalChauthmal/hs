@@ -30,7 +30,7 @@
 		$scope.houseId = $routeParams.houseId;
 		
 		var getDetails = function(id) {
-			$http.get('http://localhost:3000/housedetails/'+ id)
+			$http.get('/housedetails/'+ id)
 			.success(function (data) {
 				$scope.house = data;
 		})
