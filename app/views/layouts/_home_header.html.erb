@@ -28,7 +28,10 @@
     </div>
   <!-- /.container-fluid-->
 </nav>
- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <div class="modal-header">
@@ -36,7 +39,7 @@
       <h4>Signup</h4>
         </div>
         <div class="modal-body">
-            <%= form_for(@house_listing_request) do |f| %>
+            <%= form_for(HouseListingRequest.new) do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
                 <div class="form-group">
                     <%= f.label :name, class: "control-label" %>
