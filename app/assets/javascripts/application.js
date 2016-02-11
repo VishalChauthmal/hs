@@ -18,6 +18,6 @@
 //= require angular
 //= require angular-route
 //= require angular-rails-templates
-//= require app
+//= require homestayz
 //= require holder
 //= require_tree ./templates
