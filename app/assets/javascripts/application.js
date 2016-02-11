@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= requier turbolinks
 //= require tether.min
 //= require bootstrap
+//= require google-analytics
 //= require angular
 //= require angular-route
 //= require angular-rails-templates
+//= require homestayz
 //= require holder
 //= require_tree ./templates
-//= require_tree .
