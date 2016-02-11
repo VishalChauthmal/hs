@@ -3,7 +3,7 @@
 <div class="col-xs-6 col-xs-offset-1">
 	<div class="card">
 		<div class="card-header bg-primary">
-			<h4>Lodha Aurum</h4>
+			<h4><%= @house.title %></h4>
   </div>
 	</div>
 <div class="card">
@@ -21,13 +21,16 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <img src="<%= asset_path("portfolio/bedroom.png") %>" alt="First slide" width="100%">
+      <img src="<%= asset_path("rs/1.png") %>" alt="First slide" width="100%">
     </div>
     <div class="carousel-item">
-      <img src="<%= asset_path("portfolio/living_room.png") %>" alt="Second slide" width="100%">
+      <img src="<%= asset_path("rs/2.png") %>" alt="Second slide" width="100%">
     </div>
     <div class="carousel-item">
-      <img src="<%= asset_path("portfolio/kitchen.png") %>" alt="Third slide" width="100%">
+      <img src="<%= asset_path("rs/3.png") %>" alt="Third slide" width="100%">
+    </div>
+		<div class="carousel-item">
+      <img src="<%= asset_path("rs/4.png") %>" alt="Fourth slide" width="100%">
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -49,25 +52,7 @@
 </div>
 	<div class="card" ng-view>
 	</div>
-	<div class="card">
-		<div class="card-block">
-  		<h4 class="card-title">House Owner</h4>
-		</div>										
-  <div class="card-block">
-		<div class="row">
-			<div class="col-xs-3">
-				<img src="<%= asset_path("portfolio/user.jpg") %>" class="img-thumbnail pull-xs-left" width=""> 
-			</div>
-			<div class="col-xs-9">
-    		<h4 class="card-title">Sushant Kumar</h4>
-    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			</div>
-		</div>
-				</div>
-				<div class="card-block">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-  </div>
+	
 
   <!-- Category-wise Amenities - start -->
 	
@@ -161,112 +146,6 @@
 	</div>
 	</div>
 
-
-
-
-
-
-
-
-<h3 style="border-top:5px solid black; text-align:center; padding-top:20px; margin-top:20px;">Imported from Back-end</h3>
-
-<div style="border-bottom:1px solid gray; padding:7.5px 25px;">
-	<% if false %>
-		<div style="color:blue;">House</div>
-		<div>House ID: <%= @house.id %></div>
-		<div>House Title: <%= @house.title %></div>
-		<div>Address: <%= @house.address %></div>
-		<div>BHK: <%= @house.bhk %></div>
-		<div>No. of Beds: <%= @house.no_of_beds %></div>
-		<div>Allowed Gender: <%= @house.allowed_gender %></div>
-		<div>Locality: <%= @house.locality.name %></div>
-		<div>City: <%= @house.locality.city.name %></div>
-	<% end %>
-
-	<% if false %>
-		<div style="margin: 5px 25px;">
-			<div style="color:cadetblue;">Amenities</div>
-			<% @house.amenities.each do |amenity| %>
-				<div><%= amenity.name %></div>
-			<% end %>
-		</div>
-	<% end %>
-
-	<%# Show full-house unit only when search params include family type tenant %>
-	<% if params[:ttirzdhqpxdahayibtbop] == '2926298481259' %>
-		<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-			<div style="color:drakgray;">House</div>
-			<div>rent: <strong><%= @house.rent %></strong></div>
-			<div>security_deposit: <%= @house.security_deposit %></div>
-		</div>
-	<% else %>
-		<%# Show room units and bed units only to bachelor_male & bachelor_female %>
-		<%# params value comes from search results page to control what kind of tenant sees house/rooms/beds price %>
-		<%# if params[:ttirzdhqpxdahayibtbop] == '2' || params[:ttirzdhqpxdahayibtbop] == '3' %>
-		<%# 1 -> 2926298481259, 2 -> 10775342071178, 3 -> 18624385661097, 4 -> 6973888903935 %>
-		<%# if params[:ttirzdhqpxdahayibtbop] == '10775342071178' || params[:ttirzdhqpxdahayibtbop] == '18624385661097' %>
-			<div class="row clearfix">
-				<% @rooms.each do |room| %>
-					<div class="col-xs-<%= 12/@rooms.count %> clearfix">
-						<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-								<div style="color:drakgray;">Room</div>
-								<div>rent: <strong><%= room.rent %></strong></div>
-								<div>security_deposit: <%= room.security_deposit %></div>
-								<div>max_room_occupancy: <%= room.max_room_occupancy %></div>
-						</div>
-					</div>
-				<% end %>
-			</div>
-
-			<div class="row clearfix">
-				<% @beds.each do |bed| %>
-					<div class="col-xs-<%= 12/@beds.count %> clearfix">
-						<div style="background-color:lightgray; padding:10px 25px; margin: 10px 0;">
-								<div style="color:drakgray;">Bed</div>
-								<div>rent: <strong><%= bed.rent %></strong></div>
-								<div>security_deposit: <%= bed.security_deposit %></div>
-						</div>
-					</div>
-				<% end %>
-			</div>
-	<% end %>
-
-</div>
-
-<% if false %>
-	<div style="text-align:center; padding-top:25px; border-bottom:1px solid gray; " class="clearfix">
-		<div class="col-xs-6">
-			<h3>Photos</h3>
-			<% @photos = @house.photos %>
-			<% @photos.each do |photo| %>
-				<div style="margin-top:35px;">
-					<div>Photo ID: <%= photo.id %> | House ID: <%= photo.house_id %> | Caption: <%= photo.caption %></div>
-					<%= image_tag photo.image.url if photo.image? %>
-					<hr style="max-width:400px;">
-				</div>
-			<% end %>
-		</div>
-
-		<div class="col-xs-6">
-			<h3>Add new photo of this house</h3>
-			<div class="clearfix" style="margin:35px 50px">
-					<%= form_for(@house.photos.build, html: { multipart: true }) do |f| %>
-
-						<%= render 'shared/error_messages', object: f.object %>
-
-						<%= hidden_field_tag :house_id, @house.id %>
-
-						<%= f.file_field :image, class: 'form-control' %>
-
-						<%= f.label :caption %>
-						<%= f.text_field :caption, class: 'form-control' %>
-
-						<%= f.submit "Add House Photo", class: "btn btn-block btn-primary" %>
-					<% end %>
-			</div>
-		</div>
-	</div>
-<% end %>
 
 
 
