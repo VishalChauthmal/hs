@@ -1,0 +1,59 @@
+<div class="card-block">
+  		<h4 class="card-title">Rent Details</h4>
+		</div>										
+		<div class="card-block">
+    	<ul class="nav nav-pills">
+				<div class="col-xs-6">
+  			<li class="nav-item" style="width: 100%">
+    			<a href class="nav-link" ng-class="{ active:isSelected(1)}" ng-click="selectTab(1)">Beds</a>
+  			</li>
+				</div>
+				<div class="col-xs-6">
+				<li class="nav-item" style="width: 100%">
+    			<a href class="nav-link" ng-class="{ active:isSelected(2)}" ng-click="selectTab(2)">Rooms</a>
+  			</li>
+				</div>
+			</ul>
+		</div>
+		<!-- Angular code snippet -->
+		<div class="card-block">
+    	<div class="panel" ng-show="isSelected(1) ">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Bed</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody ng-repeat="room in house.rooms">
+    				<tr class="table-active">
+      				<th scope="row" colspan="3">Room {{$index + 1}}</td>
+						</tr>
+						<tr ng-repeat="bed in room.beds">
+      				<td class="table-success">Bed {{$index + 1}}</td>
+      				<td>INR {{bed.security_deposit}}</td>
+      				<th scope="row">INR {{bed.rent}}</th>
+    				</tr>
+  				</tbody>
+				</table>
+			</div>
+			<div class="panel" ng-show="isSelected(2)">
+				<table class="table">
+  				<thead class="thead-inverse">
+    				<tr>
+      				<th>Room</th>
+      				<th>Security Deposit</th>
+      				<th>Rent</th>
+    				</tr>
+  				</thead>
+  				<tbody ng-repeat="room in house.rooms">
+    				<tr>
+							<td class="table-success">Room {{$index +1}}</td>
+      				<td>INR {{room.security_deposit}}</td>
+      				<th scope="row">INR {{room.rent}}</th>
+    				</tr>
+  				</tbody>
+				</table>
+			</div>
+		</div>
