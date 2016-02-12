@@ -1,0 +1,13 @@
+ <!-- Carousel indicators -->
+         	<ol class="carousel-indicators">
+				    <li data-target="#fade-quote-carousel" ng-repeat="review in reviews" data-slide-to="{{ review.id }}" ng-class="{active: (review.id === 0)}"></li>
+				  </ol>
+				  <!-- Carousel items -->
+				  <div class="carousel-inner" role="listbox">
+				    <div ng-class="{'carousel-item': true, active: (review.id === 0)}" ng-repeat="review in reviews">
+                        <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+				    	<blockquote>
+				    		<p>{{review.text}}</p>
+				    	</blockquote>	
+				    </div>
+				  </div>

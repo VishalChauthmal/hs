@@ -14,10 +14,13 @@
 //= require jquery_ujs
 //= require tether.min
 //= require bootstrap
+//= require affix
+//= require main
 //= require google-analytics
 //= require angular
 //= require angular-route
 //= require angular-rails-templates
 //= require homestayz
 //= require holder
+//= require_tree ./controllers
 //= require_tree ./templates
