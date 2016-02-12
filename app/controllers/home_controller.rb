@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 
 	def search
 	end
+	
+	def owners
+	end
 
 	def search
 		@houses = House.all

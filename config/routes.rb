@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 	get 'search' => 'houses#search'
 	get 'results' => 'houses#results'
 	get 'search_results' => 'home#search'
-
+	get 'owners'	=> 'home#owners'
 
 	root 'home#coming_soon'
 	
