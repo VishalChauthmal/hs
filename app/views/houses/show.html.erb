@@ -84,26 +84,30 @@
 		<div class="card-block">
 			<table class="table table-hover">
   <tbody>
-    <tr>
-      <th scope="row">HS House ID</th>
-      <td><%= @house.id %></td>
-    </tr>
-		<tr>
-      <th scope="row">House title</th>
-      <td><%= @house.title %></td>
-    </tr>
+    <% if false %>
+      <tr>
+        <th scope="row">HS House ID</th>
+        <td><%= @house.id %></td>
+      </tr>
+  		<tr>
+        <th scope="row">House title</th>
+        <td><%= @house.title %></td>
+      </tr>
+    <% end %>
 		<tr>
       <th scope="row">Address</th>
       <td><%= @house.address %></td>
     </tr>
 		<tr>
-      <th scope="row">No. of BHK</th>
+      <th scope="row">No. of Bedrooms</th>
       <td><%= @house.bhk %></td>
     </tr>
-		<tr>
-      <th scope="row">Maximum No. of Beds</th>
-      <td><%= @house.max_no_of_beds %></td>
-    </tr>
+    <% if false %>
+  		<tr>
+        <th scope="row">Maximum No. of Beds</th>
+        <td><%= @house.max_no_of_beds %></td>
+      </tr>
+    <% end %>
 		<tr>
       <th scope="row">Locality</th>
       <td><%= @house.locality.name %></td>
