@@ -48,6 +48,7 @@ class HousesController < ApplicationController
 		@rooms = @house.rooms
 		room_ids = @rooms.pluck(:id)
 		@beds = Bed.where("room_id IN (?)", room_ids)
+		@photos = @house.photos
 	end
 
 	private

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 	resources :tenant_visits, only: [:create]
 
 	# Temporarily commented for v1 launch
-	# resources :house_photos, only: [:create, :index, :destroy]
+	resources :house_photos, only: [:create, :index, :destroy]
 
 	# Temporarily commented for v1 launch
 	resources :houses, only: [:new, :create, :show]
