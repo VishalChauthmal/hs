@@ -1,7 +1,7 @@
 class HousePhoto < ActiveRecord::Base
 	belongs_to :house, inverse_of: :photos
 
-	#mount_uploader :image, HouseImageUploader
+	mount_uploader :image, HouseImageUploader
 
 	validates	:house, presence: true
 	validates	:image, presence: true

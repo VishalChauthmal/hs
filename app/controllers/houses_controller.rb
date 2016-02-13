@@ -18,22 +18,22 @@ class HousesController < ApplicationController
 		render json: house, :include => [ :rooms => { :include => [ :beds ] } ]
 	end
 
-	# def new
-	# 	@house = House.new
-	# 	@house.beds.build
-	# 	@house.photos.build
-	# end
+	def new
+		@house = House.new
+		@house.rooms.build
+		@house.photos.build
+	end
 
-	# def create
-	# 	@house  = House.new(house_params)
-	# 	if @house.save
-	# 		flash[:success] = "Successfully created new house..."
-	# 		redirect_to @house
-	# 	else
-	# 		flash[:notice] = "@house.save failed..."
-	# 		render 'new'
-	# 	end
-	# end
+	def create
+		@house  = House.new(house_params)
+		if @house.save
+			flash[:success] = "Successfully created new house..."
+			redirect_to @house
+		else
+			flash[:notice] = "@house.save failed..."
+			render 'new'
+		end
+	end
 
 	def show
 		@house = House.find(params[:id])
